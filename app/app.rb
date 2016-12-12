@@ -4,6 +4,7 @@ require_relative 'data_mapper_setup'
 require 'sinatra/flash'
 
 class MakersBNB < Sinatra::Base
+  use Rack::MethodOverride
   enable :sessions
   set :session_secret, "himitsu"
   register Sinatra::Flash
@@ -13,8 +14,9 @@ class MakersBNB < Sinatra::Base
       User.get session[:id]
     end
   end
+
   get '/' do
-    'Hello MakersBNB!'
+    erb :home
   end
 
   get '/users/new' do
@@ -28,8 +30,18 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/spaces' do
+    erb :'spaces/index'
   end
 
+  get '/sessions/delete' do
+    erb :'sessions/delete'
+  end
+
+  delete '/sessions' do
+    flash.next[:notice] = "Goodbye #{current_user.first_name}"
+    session[:id] = nil
+    redirect "/"
+  end
 
 
 
