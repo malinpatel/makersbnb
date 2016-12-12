@@ -13,7 +13,7 @@ RSpec.feature "Sign up", :type => :feature do
     fill_in "password", with: "gugu123"
     click_button "submit"
 
-    expect(current_path).to eq '/dashboard'
+    expect(current_path).to eq '/spaces'
     message = "Welcome to MakersBnB, Malin"
     expect(page).to have_content(message)
     expect(User.all.count).to eq (user_count + 1)
