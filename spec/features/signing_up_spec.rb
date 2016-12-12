@@ -6,12 +6,12 @@ RSpec.feature "Sign up", :type => :feature do
   scenario "User signs up" do
     user_count = User.all.count
     visit '/users/new'
-    fill_in 'firstname', with: "Malin"
-    fill_in 'last-name', with: "Patel"
+    fill_in 'first_name', with: "Malin"
+    fill_in 'last_name', with: "Patel"
     fill_in 'username', with: "malina"
     fill_in "email", with: "malina@gmail.com"
     fill_in "password", with: "gugu123"
-    click_button "Sign up"
+    click_button "submit"
 
     expect(current_path).to eq '/dashboard'
     message = "Welcome to MakersBnB, Malin"
