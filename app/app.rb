@@ -26,7 +26,11 @@ class MakersBNB < Sinatra::Base
   post '/users' do
     user = User.new params
     session[:id] = user.id if user.save
-    redirect '/spaces/view'
+    if session[:id]
+      flash.next[:notice] = ["Welcome to MakersBnB, #{current_user.first_name}"]
+      redirect '/spaces/view'
+    else flash.next[:error] = ["Something went wrong. Make sure you've given correct sign-up details!"]
+    end
   end
 
   get '/spaces/view' do
@@ -38,7 +42,8 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/spaces' do
-    space = Space.new params, session[:id]
+    space = Space.new params
+    current_user.spaces << space
     space.save
     if session[:id]
       flash.next[:notice] = ["Your property London Penthouse has been listed."]

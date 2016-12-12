@@ -1,11 +1,20 @@
 require_relative '../app/models/user.rb'
+require 'spec_helper'
 
 
 describe User do
-  subject(:user) {described_class.new}
+  let(:params) do
+    {username: "malina",
+    password: 'gugu123',
+    email: 'malina@gmail.com',
+    first_name: 'Malin',
+    last_name: 'Patel'} end
+  subject(:user) {described_class.new params}
   context "#properties" do
-    it {should have_property :id}
-    it {should have_property :email}
+    before :each do
+    user.save
+    end
+
 
   end
 end

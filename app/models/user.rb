@@ -13,6 +13,8 @@ class User
 
   has n, :spaces
 
+  attr_reader :password
+
   def initialize params
     self.username = params[:username]
     self.email = params[:email]
@@ -22,7 +24,7 @@ class User
   end
 
   def password= password
-    self.password_digest = Password.create password
+    self.password_digest = BCrypt::Password.create(password)
   end
 
 

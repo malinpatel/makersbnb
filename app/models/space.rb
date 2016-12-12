@@ -11,12 +11,11 @@ class Space
 
   belongs_to :user
 
-  def initialize params, user_id
+  def initialize params
     self.name = params[:name]
     self.description = params[:description]
     self.price = params[:price]
     self.start_date = params[:start_date]
     self.end_date = params[:end_date]
-    self.user_id = user_id
   end
 end
