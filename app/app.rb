@@ -1,8 +1,19 @@
+ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
+require_relative 'data_mapper_setup'
+require 'sinatra/flash'
 
 class MakersBNB < Sinatra::Base
+  enable :sessions
+  set :session_secret, "himitsu"
+  register Sinatra::Flash
+
   get '/' do
     'Hello MakersBNB!'
+  end
+
+  get 'users/new' do
+    erb :'users/new'
   end
 
 
