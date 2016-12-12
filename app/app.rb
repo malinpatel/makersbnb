@@ -26,11 +26,17 @@ class MakersBNB < Sinatra::Base
   post '/users' do
     user = User.new params
     session[:id] = user.id if user.save
-    redirect '/spaces'
+    redirect '/spaces/view'
   end
 
-  get '/spaces' do
-    erb :'spaces/index'
+  get '/spaces/view' do
+    erb :'spaces/view'
+  end
+
+  get '/spaces/new' do
+    space = Space.new params
+    space.save
+    redirect '/spaces/view'
   end
 
   get '/sessions/delete' do
