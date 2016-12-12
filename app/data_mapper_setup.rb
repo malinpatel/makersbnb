@@ -5,7 +5,7 @@ database = ENV['DATABASE_URL'] || "postgres://localhost/makersbnb_#{ENV['RACK_EN
 DataMapper.setup(:default, database)
 
 require_relative 'models/user'
-# require_relative 'models/property'
+require_relative 'models/space'
 # require_relative 'models/request'
 
 DataMapper.finalize

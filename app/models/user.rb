@@ -11,7 +11,7 @@ class User
   property :username, String
   property :password_digest, Text
 
-  # has n, :spaces
+  has n, :spaces
 
   def initialize params
     self.username = params[:username]

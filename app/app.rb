@@ -34,17 +34,26 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/spaces/new' do
-    space = Space.new params
+    erb :'spaces/new'
+  end
+
+  post '/spaces' do
+    space = Space.new params, session[:id]
     space.save
+    if session[:id]
+      flash.next[:notice] = ["Your property London Penthouse has been listed."]
+    else flash.next[:error] = ["Something went wrong. Make sure you're logged in!"]
+    end
     redirect '/spaces/view'
   end
+
 
   get '/sessions/delete' do
     erb :'sessions/delete'
   end
 
   delete '/sessions' do
-    flash.next[:notice] = "Goodbye #{current_user.first_name}"
+    flash.next[:notice] = ["Goodbye #{current_user.first_name}"]
     session[:id] = nil
     redirect "/"
   end

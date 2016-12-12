@@ -6,14 +6,17 @@ class Space
   property :name, String
   property :description, Text
   property :price, Integer
-  property :dates, Date
+  property :start_date, Date
+  property :end_date, Date
 
-  # belongs_to :user
+  belongs_to :user
 
-  def initialize params
+  def initialize params, user_id
     self.name = params[:name]
     self.description = params[:description]
     self.price = params[:price]
-    self.dates = params[:dates]
+    self.start_date = params[:start_date]
+    self.end_date = params[:end_date]
+    self.user_id = user_id
   end
 end
