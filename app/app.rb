@@ -34,6 +34,7 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/spaces/view' do
+    # require 'pry'; binding.pry
     erb :'spaces/view'
   end
 
@@ -44,10 +45,9 @@ class MakersBNB < Sinatra::Base
   post '/spaces' do
     space = Space.new params
     current_user.spaces << space
-    space.save
-    if session[:id]
-      flash.next[:notice] = ["Your property London Penthouse has been listed."]
-    else flash.next[:error] = ["Something went wrong. Make sure you're logged in!"]
+    if space.save
+      flash.next[:notice] = "Your property #{space.name} has been listed."
+    else flash.next[:error] = "Something went wrong. Make sure you're logged in!"
     end
     redirect '/spaces/view'
   end
