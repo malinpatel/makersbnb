@@ -8,6 +8,11 @@ class MakersBNB < Sinatra::Base
   set :session_secret, "himitsu"
   register Sinatra::Flash
 
+  helpers do
+    def current_user
+      User.get session[:id]
+    end
+  end
   get '/' do
     'Hello MakersBNB!'
   end
@@ -18,7 +23,7 @@ class MakersBNB < Sinatra::Base
 
   post '/users' do
     user = User.new params
-    user.save
+    session[:id] = user.id if user.save
     redirect '/spaces'
   end
 
