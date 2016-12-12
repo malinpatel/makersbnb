@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 RSpec.feature "Adding new space", :type => :feature do
+  include Helpers
 
   scenario "User adds new space for rent" do
-    sign_up
+    user = User.new(first_name: "Malin", last_name: "Patel", username: "malina", email: "malina@gmail.com", password: "gugu123")
+
+    sign_up(user)
     space_count = Space.all.count
-    visit '/spaces/new'
-    fill_in "name", with: "London Penthouse"
-    fill_in "description", with: "3 bed, 1 swimming pool, in-house chef"
-    fill_in "price", with: "100"
-    fill_in "start_date", with: '2017-01-07'
-    fill_in "end_date", with: '2017-03-07'
-    click_button "List space"
+
+    space = Space.new(name: "London Penthouse", description: "3 bed, 1 swimming pool, in-house chef", price: "100", start_date: "2017-01-07", end_date: "2017-01-07")
+
+    list_property(space)
 
     expect(current_path).to eq('/spaces/view')
     message = "Your property London Penthouse has been listed."
