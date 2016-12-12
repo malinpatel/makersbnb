@@ -18,6 +18,7 @@ class MakersBNB < Sinatra::Base
 
   post '/users' do
     user = User.new params
+    user.save
     redirect '/spaces'
   end
 
