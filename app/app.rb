@@ -12,7 +12,7 @@ class MakersBNB < Sinatra::Base
     'Hello MakersBNB!'
   end
 
-  get 'users/new' do
+  get '/users/new' do
     erb :'users/new'
   end
 

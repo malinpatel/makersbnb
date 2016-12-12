@@ -1,6 +1,4 @@
 require 'bcrypt'
-require 'data_mapper'
-require 'dm-postgres-adapter'
 
 class User
   include BCrypt
@@ -13,9 +11,17 @@ class User
   property :username, String
   property :password_digest, Text
 
-  # has n, :spaces
-  # has n, :requests
+  def initialize params
+    self.username = params[:username]
+    self.email = params[:email]
+    self.password = params[:password]
+    self.first_name = params[:first_name]
+    self.last_name = params[:last_name]
+  end
 
+  def password= password
+    self.password_digest = Password.create password
+  end
 
 
 end
