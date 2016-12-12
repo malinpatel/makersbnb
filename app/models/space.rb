@@ -8,7 +8,7 @@ class Space
   property :price, Integer
   property :dates, Date
 
-  belongs_to :user
+  # belongs_to :user
 
   def initialize params
     self.name = params[:name]
