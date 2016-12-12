@@ -16,6 +16,15 @@ class MakersBNB < Sinatra::Base
     erb :'users/new'
   end
 
+  post '/users' do
+    user = User.new params
+    redirect '/spaces'
+  end
+
+  get '/spaces' do
+  end
+
+
 
 
   # start the server if ruby file executed directly
