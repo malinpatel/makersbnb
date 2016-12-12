@@ -1,1 +1,10 @@
 <h1>Spaces</h1>
+
+<% Space.all.reverse.each do |space| %>
+  <div id='space-box'>
+      <a id='space-title' href="/spaces/<%=space.id%>"><%=space.name%></a>
+      <p id='space-description'>
+        <%=space.description%>
+      </p>
+  </div>
+<% end %>
