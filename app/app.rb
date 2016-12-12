@@ -19,10 +19,17 @@ class MakersBNB < Sinatra::Base
   post '/users' do
     user = User.new params
     user.save
-    redirect '/spaces'
+    redirect '/spaces/view'
   end
 
-  get '/spaces' do
+  get '/spaces/view' do
+    erb :'spaces/view'
+  end
+
+  get '/spaces/new' do
+    space = Space.new params
+    space.save
+    redirect '/spaces/view'
   end
 
 
