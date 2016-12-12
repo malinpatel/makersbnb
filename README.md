@@ -1,4 +1,23 @@
-# makersbnb
+# MakersBNB
+
+## Setup
+
+This repo runs on two databases
+```
+makersbnb_test
+makersbnb_development
+```
+You will need to create these databases with postgreSQL
+```
+$ psql
+# CREATE DATABASE makersbnb_test;
+# CREATE DATABASE makersbnb_development;
+#\q
+$
+```
+
+
+## User Stories
 
 ```
 As a lettor,
