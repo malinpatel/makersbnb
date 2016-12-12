@@ -25,5 +25,11 @@ class User
     self.password_digest = Password.create password
   end
 
+  def self.authenticate params
+    user = User.first :username => params[:username]
+    return user if Password.new(user.password_digest) == params[:password]
+    return nil
+  end
+
 
 end

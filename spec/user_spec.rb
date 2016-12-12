@@ -6,6 +6,5 @@ describe User do
   context "#properties" do
     it {should have_property :id}
     it {should have_property :email}
-
   end
 end
