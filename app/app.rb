@@ -63,6 +63,16 @@ class MakersBNB < Sinatra::Base
     redirect "/"
   end
 
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
+
+  post '/sessions/new' do
+    user = User.authenticate(params)
+    session[:id] = user.id if user
+    redirect '/spaces/view'
+  end
+
 
 
   # start the server if ruby file executed directly

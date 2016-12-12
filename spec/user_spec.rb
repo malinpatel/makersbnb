@@ -11,10 +11,5 @@ describe User do
     last_name: 'Patel'} end
   subject(:user) {described_class.new params}
   context "#properties" do
-    before :each do
-    user.save
-    end
-
-
   end
 end
