@@ -11,7 +11,9 @@ class User
   property :username, String
   property :password_digest, Text
 
-  # has n, :spaces
+  has n, :spaces
+
+  attr_reader :password
 
   def initialize params
     self.username = params[:username]
@@ -22,7 +24,7 @@ class User
   end
 
   def password= password
-    self.password_digest = Password.create password
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def self.authenticate params
