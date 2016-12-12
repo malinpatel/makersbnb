@@ -6,8 +6,9 @@ RSpec.feature "Sign up", :type => :feature do
   scenario "User signs up" do
     user_count = User.all.count
     visit '/users/new'
-    fill_in 'first-name', with: "Malin"
+    fill_in 'firstname', with: "Malin"
     fill_in 'last-name', with: "Patel"
+    fill_in 'username', with: "malina"
     fill_in "email", with: "malina@gmail.com"
     fill_in "password", with: "gugu123"
     click_button "Sign up"
