@@ -1,1 +1,15 @@
-Requests:
+<div id='requests-made'>
+  <h2>Requests I have made:</h2>
+  <% current_user.requests.each do |request| %>
+    <h3> <a href='/spaces/<%=request.space.id%>'><%=request.space.name%></a></h3>
+  <%end%>
+</div>
+<div id='requests-received'>
+  <h2>Requests I have received:</h2>
+  <% current_user.spaces.each do |space| %>
+    <% space.requests.each do |request| %>
+      <h3> <a href='/spaces/<%=space.id%>'><%=space.name%></a></h3>
+      <span>Request from: <%=request.user.username%> </span>
+    <%end%>
+  <%end%>
+</div>
