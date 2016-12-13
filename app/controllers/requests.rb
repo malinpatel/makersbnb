@@ -16,4 +16,12 @@ class MakersBNB < Sinatra::Base
     erb :'requests/view'
   end
 
+  post '/requests/view' do
+    request = Request.get(params[:request_id])
+    request.accepted = true
+    request.save
+    redirect 'requests/view'
+
+  end
+
 end
