@@ -19,6 +19,6 @@ class Space
     self.price = params[:price]
     self.start_date = params[:start_date]
     self.end_date = params[:end_date]
-    self.capacity = params[:capacity]
+    self.capacity = params[:capacity].to_i
   end
 end
