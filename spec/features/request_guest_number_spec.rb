@@ -11,7 +11,7 @@ feature 'Request guest number' do
     sign_up(user2)
     visit '/spaces/view'
     visit '/spaces/view'
-    click_link "space-title-1"
+    click_link "space-title-5"
     fill_in "date_field", with: "2017-01-01"
     fill_in "number_of_guests", with: '5'
     click_button "Book"

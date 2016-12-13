@@ -6,7 +6,7 @@ feature "Creating new requests" do
   user = {first_name: "Malin", last_name: "Patel", username: "malina", email: "malina@gmail.com", password: "gugu123"}
   user2 = {first_name: "Pea", last_name: "Crystal", username: "pea", email: "pea@gmail.com", password: "secret"}
   user3 = {first_name: "Test", last_name: "McTestface", username: "t3st", email: "test@gmail.com", password: "12345"}
-  space = {name: "London Penthouse", description: "3 bed, 1 swimming pool, in-house chef", price: "100", start_date: "2017-01-01", end_date: "2017-12-12"}
+  space = {name: "London Penthouse", description: "3 bed, 1 swimming pool, in-house chef", price: "100", start_date: "2017-01-01", end_date: "2017-12-12", capacity: '4'}
 
   before(:each) do
     sign_up(user)
