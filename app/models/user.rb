@@ -29,7 +29,7 @@ class User
 
   def self.authenticate params
     user = User.first :username => params[:username]
-    return user if Password.new(user.password_digest) == params[:password]
+    return user if (user && BCrypt::Password.new(user.password_digest) == params[:password])
     return nil
   end
 

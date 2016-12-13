@@ -12,7 +12,7 @@ feature "Creating new requests" do
 
     sign_up(user)
     list_property(space)
-    sign_up(user2)
+    sign_up(user_2)
 
     visit '/spaces/view'
     click_button "View property"

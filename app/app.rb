@@ -69,7 +69,12 @@ class MakersBNB < Sinatra::Base
 
   post '/sessions/new' do
     user = User.authenticate(params)
-    session[:id] = user.id if user
+    if user
+      session[:id] = user.id
+    else
+      flash[:notice] = 'The email or password is incorrect'
+    end
+
     redirect '/spaces/view'
   end
 

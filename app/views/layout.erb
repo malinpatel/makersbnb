@@ -6,13 +6,14 @@
         <% if current_user %>
         <li> <a id='logout' href="/sessions/delete"> Log out </a></li>
         <% else %>
+        <li> <a id='signup' href='/users/new'> Sign up </a>
         <li> <a id='login' href='/sessions/new'> Log in </a></li>
         <% end %>
       </ul>
     </nav>
     <h1> Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
     <% if flash[:notice] %>
-    <h3><%= flash[:notice] %></h3>
+    <h3><%= flash[:notice].join(" ") %></h3>
     <% end %>
     <%= yield %>
   </body>
