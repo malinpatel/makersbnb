@@ -27,13 +27,20 @@ module Helpers
 
   def list_property(space)
     visit '/spaces/new'
-    fill_in "name", with: space.name
-    fill_in "description", with: space.description
-    fill_in "price", with: space.price
-    fill_in "start_date", with: space.start_date
-    fill_in "end_date", with: space.end_date
+    fill_in "name", with: space[:name]
+    fill_in "description", with: space[:description]
+    fill_in "price", with: space[:price]
+    fill_in "start_date", with: space[:start_date]
+    fill_in "end_date", with: space[:end_date]
     click_button "List space"
   end
+end
+
+def make_request
+  visit '/spaces/view'
+  click_link "space-title-#{Space.first.id}"
+  fill_in "date_field", with: "2017-01-01"
+  click_button "Book"
 end
 
 #check whether space_penthouse_create is needed or not, as it duplicates list_property.

@@ -4,20 +4,17 @@ feature "Creating new requests" do
   include Helpers
 
   scenario "a guest creates a new request" do
-    user = User.new(first_name: "Malin", last_name: "Patel", username: "malina", email: "malina@gmail.com", password: "gugu123")
+    user = {first_name: "Malin", last_name: "Patel", username: "malina", email: "malina@gmail.com", password: "gugu123"}
 
-    user2 = User.new(first_name: "Pea", last_name: "Crystal", username: "pea", email: "pea@gmail.com", password: "secret")
+    user2 = {first_name: "Pea", last_name: "Crystal", username: "pea", email: "pea@gmail.com", password: "secret"}
 
-    space = Space.new(name: "London Penthouse", description: "3 bed, 1 swimming pool, in-house chef", price: "100", start_date: "2017-01-01", end_date: "2017-12-31")
+    space = {name: "London Penthouse", description: "3 bed, 1 swimming pool, in-house chef", price: "100", start_date: "2017-01-01", end_date: "2017-12-12"}
 
     sign_up(user)
     list_property(space)
-    sign_up(user_2)
+    sign_up(user2)
 
-    visit '/spaces/view'
-    click_link "space-title-#{Space.first.id}"
-    fill_in "date_field", with: "2017-01-01"
-    click_button "Book"
+    make_request
     expect(current_path).to eq('/spaces/view')
     expect(page).to have_content("Your booking request for London Penthouse has been sent to the owner")
   end
