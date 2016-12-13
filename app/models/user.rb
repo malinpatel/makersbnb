@@ -12,6 +12,7 @@ class User
   property :password_digest, Text
 
   has n, :spaces
+  has n, :requests
 
   attr_reader :password
 

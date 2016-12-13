@@ -42,6 +42,12 @@ class MakersBNB < Sinatra::Base
     erb :'spaces/new'
   end
 
+  get '/spaces/:space_id' do
+    @space = Space.get params[:space_id]
+    session[:space_id] = params[:space_id]
+    erb :'spaces/id'
+  end
+
   post '/spaces' do
     space = Space.new params
     current_user.spaces << space
@@ -73,7 +79,17 @@ class MakersBNB < Sinatra::Base
     redirect '/spaces/view'
   end
 
-
+  post '/requests' do
+    request = Request.new params
+    space = Space.get(session[:space_id])
+    current_user.requests << request
+    space.requests << request
+    if request.save
+      flash.next[:notice] = "Your booking request for #{space.name} has been sent to the owner"
+      session[:space_id] = nil
+    end
+    redirect 'spaces/view'
+  end
 
 
 
