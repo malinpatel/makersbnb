@@ -9,10 +9,10 @@ module Helpers
     click_button "submit"
   end
 
-  def log_in(user)
+  def log_in hash
     visit '/sessions/new'
-    fill_in 'username', with: user.username
-    fill_in "password", with: user.password
+    fill_in 'username', with: hash[:username]
+    fill_in "password", with: hash[:password]
     click_button 'submit'
   end
 
