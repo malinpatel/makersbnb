@@ -22,6 +22,9 @@
     <% if flash[:notice] %>
     <h3><%= flash[:notice].join(" ") %></h3>
     <% end %>
+    <% if flash[:error] %>
+    <h3><%= flash[:error].join(" ") %></h3>
+    <% end %>
     <%= yield %>
   </body>
 
