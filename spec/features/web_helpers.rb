@@ -41,6 +41,6 @@ def make_request(space)
   visit '/spaces/view'
   click_link "space-title-#{space.id}"
   fill_in "date_field", with: "2017-01-01"
-  fill_in "number_of_guests", with: '5'
+  fill_in "number_of_guests", with: '4'
   click_button "Book"
 end

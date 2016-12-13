@@ -3,7 +3,7 @@ class MakersBNB < Sinatra::Base
   post '/requests' do
     space = Space.get(session[:space_id])
 
-   
+
 
 
     if space.is_available? Date.parse params[:date]
@@ -14,12 +14,12 @@ class MakersBNB < Sinatra::Base
       if request.no_guests.to_i  > space.capacity
         flash.next[:error] = ["Maximum number of guests exceeded."]
         redirect "spaces/#{space.id}"
-      else 
-      if request.save
-        flash.next[:notice] = ["Your booking request for #{space.name} has been sent to the owner"]
-        session[:space_id] = nil
+      else
+        if request.save
+          flash.next[:notice] = ["Your booking request for #{space.name} has been sent to the owner"]
+          session[:space_id] = nil
+        end
       end
-      end  
     else
       flash.next[:error] = ["Sorry, #{space.name} is unavailable on #{params[:date]}"]
 
