@@ -29,7 +29,7 @@ class MakersBNB < Sinatra::Base
     if session[:id]
       flash.next[:notice] = ["Welcome to MakersBnB, #{current_user.first_name}"]
       redirect '/spaces/view'
-    else flash.next[:error] = ["Something went wrong. Make sure you've given correct sign-up details!"]
+    else flash.next[:error] = user.errors.full_messages
     end
   end
 

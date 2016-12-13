@@ -14,7 +14,7 @@ feature "Creating new requests" do
     list_property(space)
     sign_up(user2)
 
-    make_request
+    make_request(Space.first)
     expect(current_path).to eq('/spaces/view')
     expect(page).to have_content("Your booking request for London Penthouse has been sent to the owner")
   end
