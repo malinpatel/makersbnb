@@ -8,6 +8,7 @@ class Space
   property :price, Integer
   property :start_date, Date
   property :end_date, Date
+  property :capacity, Integer
 
   belongs_to :user
   has n, :requests
@@ -18,5 +19,6 @@ class Space
     self.price = params[:price]
     self.start_date = params[:start_date]
     self.end_date = params[:end_date]
+    self.capacity = params[:capacity]
   end
 end
