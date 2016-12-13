@@ -14,10 +14,7 @@ feature 'Approving requests' do
       list_property(penthouse)
       make_request(Space.first)
       visit '/requests/view'
-      click_link "View received requests"
-      expect(current_path).to eq('/requests/view/received')
-      click_link 'Penthouse'
-      click_button 'Approve request'
-      expect(Request.first.accepted).to be('true')
+      click_button 'approve'
+      expect(Request.get(1).accepted).to be(true)
   end
 end

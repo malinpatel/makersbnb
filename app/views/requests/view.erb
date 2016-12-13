@@ -10,7 +10,14 @@
     <% space.requests.each do |request| %>
       <h3> <a href='/spaces/<%=space.id%>'><%=space.name%></a></h3>
       <span>Request from: <%=request.user.username%> </span>
+      <% if !request.accepted%>
+        <form action='/requests/view' method='post'>
+          <input type='hidden' name="request_id"  value="<%=request.id%>"/>
+            <input id='approve-request' type="submit" value="approve" />
+        </form>
+      <% else %>
+       <h4> Request accepted </h4>
+      <% end %>
     <%end%>
   <%end%>
-  <h3><a href='requests/view/received'>View received requests</a></h3>
 </div>
