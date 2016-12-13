@@ -3,15 +3,15 @@ class Request
   include DataMapper::Resource
 
   property :id, Serial
-  property :start_date, Date
-  property :end_date, Date
+  property :date, Date
+  property :accepted, Boolean
 
-  belongs_to  :property
+  belongs_to  :space
   belongs_to  :user
 
   def initialize params
-    self.start_date = params[:start_date]
-    self.end_date = params[:end_date]
+    self.date = params[:date]
+    self.accepted = false
   end
-  
+
 end

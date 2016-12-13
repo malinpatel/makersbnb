@@ -10,6 +10,7 @@ class Space
   property :end_date, Date
 
   belongs_to :user
+  has n, :requests
 
   def initialize params
     self.name = params[:name]

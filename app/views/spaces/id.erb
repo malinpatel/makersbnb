@@ -1,0 +1,10 @@
+<h1> <%=@space.name%> </h1>
+<h2> <%=@space.price%> per day </h2>
+<p> <%=@space.description %>  </p>
+
+
+<form action='/requests' method='post'>
+  <label for='date'>What day do you wish to stay?</label>
+  <input id='date_field' type='date' name='date'>
+  <input id='submit' type='submit' value="Book"/>
+</form>
