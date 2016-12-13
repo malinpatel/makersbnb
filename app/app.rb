@@ -52,8 +52,8 @@ class MakersBNB < Sinatra::Base
     space = Space.new params
     current_user.spaces << space
     if space.save
-      flash.next[:notice] = "Your property #{space.name} has been listed."
-    else flash.next[:error] = "Something went wrong. Make sure you're logged in!"
+      flash.next[:notice] = ["Your property #{space.name} has been listed."]
+    else flash.next[:error] = ["Something went wrong. Make sure you're logged in!"]
     end
     redirect '/spaces/view'
   end
@@ -75,7 +75,12 @@ class MakersBNB < Sinatra::Base
 
   post '/sessions/new' do
     user = User.authenticate(params)
-    session[:id] = user.id if user
+    if user
+      session[:id] = user.id
+    else
+      flash[:notice] = ['The email or password is incorrect']
+    end
+
     redirect '/spaces/view'
   end
 
