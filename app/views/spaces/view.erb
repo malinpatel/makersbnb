@@ -2,7 +2,7 @@
 
 <% Space.all.reverse.each do |space| %>
   <div id='space-box'>
-      <a id='space-title' href="/spaces/<%=space.id%>"><%=space.name%></a>
+      <a id='space-title-<%=space.id%>' href="/spaces/<%=space.id%>"><%=space.name%></a>
       <p id='space-description'>
         <%=space.description%>
       </p>
