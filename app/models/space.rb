@@ -21,4 +21,14 @@ class Space
     self.end_date = params[:end_date]
     self.capacity = params[:capacity].to_i
   end
+
+  def is_available? date
+    if date >= self.start_date && date <= self.end_date
+      self.requests.select(&:accepted).each do |request|
+        return false if date == request.date
+      end
+      return true
+    end
+    false
+  end
 end
