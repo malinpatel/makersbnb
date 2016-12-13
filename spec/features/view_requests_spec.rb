@@ -44,7 +44,21 @@ feature "viewing requests" do
 
     scenario "View requests I have made" do
       visit '/requests/view'
-      expect(page).to have_content penthouse[:name]
+      within "div#requests-made" do
+        expect(page).to have_content "Requests I have made"
+        expect(page).to have_content penthouse[:name]
+      end
     end
 
+    scenario "View requests on my properties that I have received" do
+      log_out
+      log_in user
+      visit '/requests/view'
+      within 'div#requests-received' do
+        expect(page).to have_content "Requests I have received"
+        expect(page).to have_content penthouse[:name]
+        expect(page).to have_content "Request from"
+        expect(page).to have_content user2[:username]
+      end
+    end
 end
