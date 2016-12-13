@@ -13,4 +13,16 @@ RSpec.feature "Sign up", :type => :feature do
     expect(page).to have_content(message)
     expect(User.all.count).to eq (user_count + 1)
   end
+
+  scenario "User signs up with registered username" do
+    user_1 = {first_name: "Dan", last_name: "Tom", username: "dan", email: "dan@gmail.com", password: "1234"}
+    user_2 = {first_name: "Mal", last_name: "Patel", username: "dan", email: "mal@gmail.com", password: "1234"}
+
+    sign_up(user_1)
+    log_out
+    sign_up(user_2)
+
+    expect(page).to have_content("Something went wrong. Make sure you've given correct sign-up details!")
+
+  end
 end

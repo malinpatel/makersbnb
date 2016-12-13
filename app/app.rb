@@ -34,7 +34,6 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/spaces/view' do
-    # require 'pry'; binding.pry
     erb :'spaces/view'
   end
 

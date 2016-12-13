@@ -5,16 +5,18 @@ class User
   include DataMapper::Resource
 
   property :id, Serial
-  property :email, Text
+  property :email, Text, unique: true
   property :first_name, String
   property :last_name, String
-  property :username, String
+  property :username, String, unique: true
   property :password_digest, Text
 
   has n, :spaces
   has n, :requests
 
   attr_reader :password
+
+  validates_uniqueness_of :username, :email
 
   def initialize params
     self.username = params[:username]

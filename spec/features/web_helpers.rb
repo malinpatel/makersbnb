@@ -43,7 +43,6 @@ def make_request
   click_button "Book"
 end
 
-#check whether space_penthouse_create is needed or not, as it duplicates list_property.
 def space_penthouse_create
   visit '/spaces/new'
   fill_in "name", with: "London Penthouse"
