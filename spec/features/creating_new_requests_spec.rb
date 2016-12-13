@@ -14,10 +14,7 @@ feature "Creating new requests" do
     list_property(space)
     sign_up(user2)
 
-    visit '/spaces/view'
-    click_link "space-title-#{Space.first.id}"
-    fill_in "date_field", with: "2017-01-01"
-    click_button "Book"
+    make_request
     expect(current_path).to eq('/spaces/view')
     expect(page).to have_content("Your booking request for London Penthouse has been sent to the owner")
   end

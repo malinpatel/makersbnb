@@ -36,6 +36,13 @@ module Helpers
   end
 end
 
+def make_request
+  visit '/spaces/view'
+  click_link "space-title-#{Space.first.id}"
+  fill_in "date_field", with: "2017-01-01"
+  click_button "Book"
+end
+
 #check whether space_penthouse_create is needed or not, as it duplicates list_property.
 def space_penthouse_create
   visit '/spaces/new'
