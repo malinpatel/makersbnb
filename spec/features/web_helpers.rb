@@ -27,11 +27,11 @@ module Helpers
 
   def list_property(space)
     visit '/spaces/new'
-    fill_in "name", with: space.name
-    fill_in "description", with: space.description
-    fill_in "price", with: space.price
-    fill_in "start_date", with: space.start_date
-    fill_in "end_date", with: space.end_date
+    fill_in "name", with: space[:name]
+    fill_in "description", with: space[:description]
+    fill_in "price", with: space[:price]
+    fill_in "start_date", with: space[:start_date]
+    fill_in "end_date", with: space[:end_date]
     click_button "List space"
   end
 end
