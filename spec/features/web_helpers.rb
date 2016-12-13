@@ -36,19 +36,9 @@ module Helpers
   end
 end
 
-def make_request
+def make_request(space)
   visit '/spaces/view'
-  click_link "space-title-#{Space.first.id}"
+  click_link "space-title-#{space.id}"
   fill_in "date_field", with: "2017-01-01"
   click_button "Book"
-end
-
-def space_penthouse_create
-  visit '/spaces/new'
-  fill_in "name", with: "London Penthouse"
-  fill_in "description", with: "3 bed, 1 swimming pool, in-house chef"
-  fill_in "price", with: "100"
-  fill_in "start_date", with: '2017-01-07'
-  fill_in "end_date", with: '2017-03-07'
-  click_button "List space"
 end
