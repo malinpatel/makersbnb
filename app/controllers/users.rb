@@ -10,6 +10,7 @@ class MakersBNB < Sinatra::Base
       flash.next[:notice] = ["Welcome to MakersBnB, #{current_user.first_name}"]
       redirect '/spaces/view'
     else flash.next[:error] = user.errors.full_messages
+      redirect '/users/new'
     end
   end
 end

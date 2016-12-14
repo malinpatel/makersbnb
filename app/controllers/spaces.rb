@@ -4,7 +4,12 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/spaces/new' do
-    erb :'spaces/new'
+    if current_user
+      erb :'spaces/new'
+    else
+     flash.next[:error] = ["Something went wrong. Make sure you're logged in!"]
+     redirect '/sessions/new'
+    end
   end
 
   get '/spaces/:space_id' do
@@ -15,12 +20,8 @@ class MakersBNB < Sinatra::Base
 
   post '/spaces' do
     space = Space.new params
-    if current_user
-      current_user.spaces << space
-      flash.next[:notice] = ["Your property #{space.name} has been listed."] if space.save
-    else
-     flash.next[:error] = ["Something went wrong. Make sure you're logged in!"]
-    end
+    current_user.spaces << space
+    flash.next[:notice] = ["Your property #{space.name} has been listed."] if space.save
     redirect '/spaces/view'
   end
 end

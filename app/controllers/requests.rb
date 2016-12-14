@@ -24,7 +24,11 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/requests/view' do
-    erb :'requests/view'
+    if current_user
+      erb :'requests/view'
+    else flash.next[:error] = ["You have to be logged in to view the requests"]
+      redirect 'sessions/new'
+    end
   end
 
   post '/requests/view' do
