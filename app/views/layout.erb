@@ -3,12 +3,14 @@
   <head>
   </head>
   <body>
-    <link rel="stylesheet" type="text/css" href="/mystyle.css" ></link>
-    <nav>
-      <ul id="navigation-bar">
+    <link rel="stylesheet" type="text/css" href="/mystyle.css?v=1" ></link>
+    <nav id='nav'>
+      <ul id="navigation-bar" class="clearfix">
+        <li id="logo"><img src="https://postimg.org/image/svscn2859/"/></li>
         <li class="navigation-item"> <a id='list_space' href='/spaces/new'> List space </a></li>
         <li class="navigation-item"> <a id='view_spaces' href='/spaces/view'> View spaces </a></li>
         <li class="navigation-item"> <a id='view_requests' href='/requests/view'> View requests </a></li>
+
 
         <% if current_user %>
           <li class="navigation-item"> <a id='logout' href="/sessions/delete"> Log out </a></li>
@@ -29,3 +31,4 @@
   </body>
 
 </html>
+<!-- app/public/assets/airbnb-logo.png -->

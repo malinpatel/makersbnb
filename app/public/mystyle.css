@@ -2,8 +2,20 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    color: red;
+
+}
+
+.clearfix {
+  overflow: auto;
 }
 
 .navigation-item {
     display: inline;
+    float: right;
+}
+
+#logo {
+  float: left;
+  height: 50px;
 }

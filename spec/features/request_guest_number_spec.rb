@@ -15,7 +15,6 @@ feature 'Request guest number' do
     fill_in "date_field", with: "2017-01-01"
     fill_in "number_of_guests", with: '5'
     click_button "Book"
-
     expect(page).to have_content("Maximum number of guests exceeded.")
   end
 end

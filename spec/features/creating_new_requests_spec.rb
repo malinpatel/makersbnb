@@ -18,7 +18,7 @@ feature "Creating new requests" do
   scenario "a guest creates a new request" do
     expect(current_path).to eq('/spaces/view')
     expect(Request.count).to eq 1
-    expect(page).to have_content("Your booking request for London Penthouse has been sent to the owner")
+    expect(page).to have_content("Your booking request for London Penthouse has been sent to the owner")    
   end
 
   scenario "A guest tries to request an unavailable date" do
