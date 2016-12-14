@@ -1,23 +1,23 @@
 <h1> <%=@space.name%> </h1>
-<h2> <%=@space.price%> per day </h2>
-<p> <%=@space.description %>  </p>
-<p> <%=@space.capacity %> </p>
+<h2> Price: <%=@space.price%> per day </h2>
+<p> Description: <%=@space.description %>  </p>
+<p> Maximum Capacity: <%=@space.capacity %> </p>
 <p id='dates'>
-  <span id='start-date'>Start date: <%=@space.start_date%> </span>
-  <span id='end-date'>End date: <%=@space.end_date%> </span>
+Check from the range of available dates to see if the property is still available:
 </p>
 
 <form action='/requests' method='post'>
+<ul>
+  <li><label for='date'>What day do you wish to stay?</label></li>
+  <input type='date' min="<%=@space.start_date%>" max="<%=@space.end_date%>" id='date-field' name='date'>
 
-  <label for='date'>What day do you wish to stay?</label>
-  <input id='date-field' type='date' name='date'>
-
-  <label for='no_guests'>Number of guests:</label>
+  <li><label for='no_guests'>Number of guests:</label></li>
   <select id='number-of-guests' name='no_guests'>
     <% (1..@space.capacity).each do |number| %>
     <option value='<%=number%>'><%=number%></option>
     <%end%>
   </select>
 
-  <input id='submit' type='submit' value="Book"/>
+  <li><input id='submit' type='submit' value="Book"/></li>
+</ul>
 </form>
