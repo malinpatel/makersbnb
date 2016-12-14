@@ -1,5 +1,5 @@
 body {
-  font-family: Impact;
+  font-family: Helvetica;
   color: black;
   text-decoration: none;
 }
@@ -20,7 +20,9 @@ nav ul {
     display: inline;
     float: right;
     padding-right: 10px;
+    font-weight: bold;
 }
+
 a:link {color: black;}
 a:hover {color: red;}
 
@@ -30,5 +32,25 @@ a:hover {color: red;}
 
 #logo {
   float: left;
-  height: 50px;
+  max-width: 3%;
+}
+
+form {
+  /*max-height: 50%;*/
+  max-width: 100%;
+  float: center;
+  text-align: center;
+  vertical-align: middle;
+  background-color: LightCoral;
+  color: white;
+}
+
+form ul {
+    list-style-type: none;
+}
+
+#welcome {
+  text-align: center;
+  padding-left: 40px;
+  font-family: Impact;
 }

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>MakersBnB</title>
+    <link rel="stylesheet" type="text/css" href="/mystyle.css?v=1" ></link>
   </head>
   <body>
-    <link rel="stylesheet" type="text/css" href="/mystyle.css?v=1" ></link>
     <nav id='nav'>
       <ul id="navigation-bar" class="clearfix">
         <li><img id="logo" src="/assets/logo.png"/></li>
@@ -20,7 +21,7 @@
         <% end %>
       </ul>
     </nav>
-    <h1> Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
+    <h1 id="welcome"> Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
     <% if flash[:notice] %>
     <h3><%= flash[:notice].join(" ") %></h3>
     <% end %>
