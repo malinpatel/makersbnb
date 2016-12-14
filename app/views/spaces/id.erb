@@ -2,7 +2,10 @@
 <h2> <%=@space.price%> per day </h2>
 <p> <%=@space.description %>  </p>
 <p> <%=@space.capacity %> </p>
-
+<p id='dates'>
+  <span id='start-date'>Start date: <%=@space.start_date%> </span>
+  <span id='end-date'>End date: <%=@space.end_date%> </span>
+</p>
 
 <form action='/requests' method='post'>
   <label for='date'>What day do you wish to stay?</label>

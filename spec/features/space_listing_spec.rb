@@ -32,4 +32,11 @@ feature 'listing spaces' do
     expect(page).to have_content "London Penthouse"
     expect(page).to have_content "Baldrick's Hovel"
   end
+
+  scenario 'I want to view the start and end dates of a listing' do
+    visit '/spaces/view'
+    click_link('London Penthouse')
+    expect(page).to have_content "Start date: 2016-01-01"
+    expect(page).to have_content "End date: 2018-01-01"
+  end
 end
