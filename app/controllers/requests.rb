@@ -2,7 +2,6 @@ class MakersBNB < Sinatra::Base
 
   post '/requests' do
     space = Space.get(session[:space_id])
-
     if space.is_available? Date.parse params[:date]
       request = Request.new params
       current_user.requests << request
@@ -20,7 +19,6 @@ class MakersBNB < Sinatra::Base
 
     else
       flash.next[:error] = ["Sorry, #{space.name} is unavailable on #{params[:date]}"]
-
     end
     redirect 'spaces/view'
   end
