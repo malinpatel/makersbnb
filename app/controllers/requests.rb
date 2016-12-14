@@ -16,6 +16,7 @@ class MakersBNB < Sinatra::Base
           session[:space_id] = nil
         end
       end
+
     else
       flash.next[:error] = ["Sorry, #{space.name} is unavailable on #{params[:date]}"]
     end
