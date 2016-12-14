@@ -6,12 +6,14 @@ feature 'listing spaces' do
     {name: "London Penthouse",
     description: "Lovely big city flat in Whitechapel E1",
     price: 100,
+    capacity: 6,
     start_date: '2016-01-01',
     end_date: '2018-01-01'} end
   let(:hovel) do
     {name: "Baldrick's Hovel",
     description: "A hole located in Bethnal Green",
     price: 10,
+    capacity: 2,
     start_date: '2016-01-01',
     end_date: '2018-01-01'} end
   let(:user) do
