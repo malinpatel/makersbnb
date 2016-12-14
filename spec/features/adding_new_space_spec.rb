@@ -39,7 +39,6 @@ RSpec.feature "Adding new space", :type => :feature do
     visit '/spaces/new'
     expect(page).to have_xpath '//input[@id="start_date" and @type="date"]'
     expect(page).to have_xpath '//input[@id="end_date" and @type="date"]'
-
   end
 
   scenario "I shouldn't be able to list a property as a visitor" do

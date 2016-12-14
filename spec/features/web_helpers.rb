@@ -32,7 +32,7 @@ module Helpers
     fill_in "price", with: space[:price]
     fill_in "start_date", with: space[:start_date]
     fill_in "end_date", with: space[:end_date]
-    fill_in "capacity", with: space[:capacity]
+    select space[:capacity], from: "capacity"
     click_button "List space"
   end
 end
