@@ -40,6 +40,13 @@ feature 'listing spaces' do
     expect(page).to have_content "End date: 2018-01-01"
   end
 
+  scenario "I want to select my dates from a calendar" do
+    visit '/spaces/new'
+    expect(page).to have_xpath '//input[@id="start_date" and @type="date"]'
+    expect(page).to have_xpath '//input[@id="end_date" and @type="date"]'
+
+  end
+
   scenario "I shouldn't be able to list a property as a visitor" do
     log_out
     visit '/spaces/new'
