@@ -32,7 +32,7 @@ module Helpers
     fill_in "price", with: space[:price]
     fill_in "start_date", with: space[:start_date]
     fill_in "end_date", with: space[:end_date]
-    fill_in "capacity", with: space[:capacity]
+    select space[:capacity], from: "capacity"
     click_button "List space"
   end
 end
@@ -40,7 +40,7 @@ end
 def make_request(space)
   visit '/spaces/view'
   click_link "space-title-#{space.id}"
-  fill_in "date_field", with: "2017-01-01"
-  fill_in "number_of_guests", with: '4'
+  fill_in "date-field", with: "2017-01-01"
+  select '4', from: "number-of-guests"
   click_button "Book"
 end
