@@ -34,13 +34,15 @@
         </div>
       </div>
     </nav>
-    <h1 id="welcome"> Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
-    <% if flash[:notice] %>
-    <h3><%= flash[:notice].join(" ") %></h3>
-    <% end %>
-    <% if flash[:error] %>
-    <h3><%= flash[:error].join(" ") %></h3>
-    <% end %>
+    <div id="welcome">
+      <h1 > Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
+      <% if flash[:notice] %>
+      <h3><%= flash[:notice].join(" ") %></h3>
+      <% end %>
+      <% if flash[:error] %>
+      <h3><%= flash[:error].join(" ") %></h3>
+      <% end %>
+      <div>
     <%= yield %>
   </body>
 
