@@ -1,8 +1,13 @@
 class MakersBNB < Sinatra::Base
 
   get '/requests/new' do
-    @space = Space.get session[:space_id]
-    erb :'requests/new'
+    if current_user
+      @space = Space.get session[:space_id]
+      erb :'requests/new'
+    else
+      flash.next[:notice] = ["Sign up to book your space"]
+      redirect '/users/new'
+    end
   end
 
   post '/requests' do
