@@ -17,6 +17,7 @@ class User
   attr_reader :password
 
   validates_uniqueness_of :username, :email
+  validates_format_of :email, :as => :email_address
 
   def initialize params
     self.username = params[:username]
