@@ -2,24 +2,36 @@
 <html>
   <head>
     <title>MakersBnB</title>
-    <link rel="stylesheet" type="text/css" href="/mystyle.css?v=1" ></link>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="/heroic/css/bootstrap.css" rel="stylesheet">
+    <link href="/heroic/css/heroic-features.css" rel="stylesheet">
+    <link href='/heroic/css/custom.css' rel='stylesheet'>
+
   </head>
   <body>
-    <nav id='nav'>
-      <ul id="navigation-bar" class="clearfix">
-        <li><img id="logo" src="/assets/logo.png"/></li>
-        <li class="navigation-item"> <a id='list_space' href='/spaces/new'> List space </a></li>
-        <li class="navigation-item"> <a id='view_spaces' href='/spaces/view'> View spaces </a></li>
-        <li class="navigation-item"> <a id='view_requests' href='/requests/view'> View requests </a></li>
-
-
-        <% if current_user %>
-          <li class="navigation-item"> <a id='logout' href="/sessions/delete"> Log out </a></li>
-        <% else %>
-          <li class="navigation-item"> <a id='signup' href='/users/new'> Sign up </a>
-          <li class="navigation-item"> <a id='login' href='/sessions/new'> Log in </a></li>
-        <% end %>
-      </ul>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav" id="navigation-bar">
+            <li><img id="logo" src="/assets/logo.png"/></li>
+            <li class="navigation-item"> <a id='list_space' href='/spaces/new'> List space </a></li>
+            <li class="navigation-item"> <a id='view_spaces' href='/spaces/view'> View spaces </a></li>
+            <li class="navigation-item"> <a id='view_requests' href='/requests/view'> View requests </a></li>
+            <% if current_user %>
+              <li class="navigation-item"> <a id='logout' href="/sessions/delete"> Log out </a></li>
+            <% else %>
+              <li class="navigation-item"> <a id='signup' href='/users/new'> Sign up </a>
+              <li class="navigation-item"> <a id='login' href='/sessions/new'> Log in </a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </nav>
     <h1 id="welcome"> Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
     <% if flash[:notice] %>
