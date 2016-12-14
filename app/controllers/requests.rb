@@ -1,5 +1,10 @@
 class MakersBNB < Sinatra::Base
 
+  get '/requests/new' do
+    @space = Space.get session[:space_id]
+    erb :'requests/new'
+  end
+
   post '/requests' do
     space = Space.get(session[:space_id])
     if space.is_available? Date.parse params[:date]

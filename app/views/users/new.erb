@@ -1,19 +1,22 @@
 
-<div id='form'>
+<div class='input-group'>
   <form action='/users' method='post'>
-    <ul>
-      <li><h2>Please sign up</h2></li>
-      <li><label for="first_name">First Name: </label></li>
-        <input id='first_name' type="text" name="first_name" />
-      <li><label for="last_name">Last Name: </label></li>
-        <input id='last_name' type="text" name="last_name" />
-      <li><label for="username">Username:</label></li>
-        <input id='username' type="text" name="username" />
-      <li><label for="email">Email:</label></li>
-        <input id='email' type="email" name="email" />
-      <li><label for="password">Password:</label></li>
-        <input id='password' type="password" name="password" />
-      <li><input id='submit' type="submit" value="Sign up" /></li>
-    </ul>
+    <h2>Please sign up</h2>
+    <div class="form-group">
+      <input id='first_name' type="text" placeholder="First Name" name="first_name" />
+    </div>
+    <div class="form-group">
+      <input id='last_name' type="text" placeholder="Last Name" name="last_name" />
+    </div>
+    <div class="form-group">
+      <input id='username' type="text" placeholder="Username" name="username" />
+    </div>
+    <div class="form-group">
+      <input id='email' type="email" placeholder="Email" name="email" />
+    </div>
+    <div class="form-group">
+      <input id='password' type="password" placeholder="Password" name="password" />
+    </div>
+    <input id='submit' type="submit" value="Sign up" />
   </form>
 </div>

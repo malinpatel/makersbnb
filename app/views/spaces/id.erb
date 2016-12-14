@@ -3,21 +3,9 @@
 <p> Description: <%=@space.description %>  </p>
 <p> Maximum Capacity: <%=@space.capacity %> </p>
 <p id='dates'>
-Check from the range of available dates to see if the property is still available:
+
 </p>
 
-<form action='/requests' method='post'>
-<ul>
-  <li><label for='date'>What day do you wish to stay?</label></li>
-  <input type='date' min="<%=@space.start_date%>" max="<%=@space.end_date%>" id='date-field' name='date'>
-
-  <li><label for='no_guests'>Number of guests:</label></li>
-  <select id='number-of-guests' name='no_guests'>
-    <% (1..@space.capacity).each do |number| %>
-    <option value='<%=number%>'><%=number%></option>
-    <%end%>
-  </select>
-
-  <li><input id='submit' type='submit' value="Book"/></li>
-</ul>
+<form action='/requests/new' method='get'>
+  <input type='submit' value='Book'/>
 </form>

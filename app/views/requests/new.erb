@@ -1,0 +1,18 @@
+<div class='input-group'>
+  <form action='/requests' method='post'>
+    <div class="form-group">
+      <label for='date'>What day do you wish to stay?</label>
+        <input type='date' min="<%=@space.start_date%>" max="<%=@space.end_date%>" id='date-field' name='date'>
+    </div>
+    <div class="form-group">
+      <label for='no_guests'>Number of guests:</label>
+        <select id='number-of-guests' name='no_guests'>
+          <% (1..@space.capacity).each do |number| %>
+            <option value='<%=number%>'><%=number%></option>
+          <%end%>
+        </select>
+    </div>
+
+    <input id='submit' type='submit' value="Book"/>
+  </form>
+</div>
