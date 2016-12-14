@@ -65,4 +65,12 @@ feature "viewing requests" do
           expect(page).to have_content user2[:username]
         end
       end
+
+      scenario "I cannot view requests while not logged in" do
+        log_out
+        visit '/requests/view'
+        expect(current_path).to eq('/sessions/new')
+        message = "You have to be logged in to view the requests"
+        expect(page).to have_content(message)
+      end
     end
