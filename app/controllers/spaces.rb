@@ -15,10 +15,11 @@ class MakersBNB < Sinatra::Base
 
   post '/spaces' do
     space = Space.new params
-    current_user.spaces << space
-    if space.save
-      flash.next[:notice] = ["Your property #{space.name} has been listed."]
-    else flash.next[:error] = ["Something went wrong. Make sure you're logged in!"]
+    if current_user
+      current_user.spaces << space
+      flash.next[:notice] = ["Your property #{space.name} has been listed."] if space.save
+    else
+     flash.next[:error] = ["Something went wrong. Make sure you're logged in!"]
     end
     redirect '/spaces/view'
   end

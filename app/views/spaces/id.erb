@@ -2,12 +2,22 @@
 <h2> <%=@space.price%> per day </h2>
 <p> <%=@space.description %>  </p>
 <p> <%=@space.capacity %> </p>
-
+<p id='dates'>
+  <span id='start-date'>Start date: <%=@space.start_date%> </span>
+  <span id='end-date'>End date: <%=@space.end_date%> </span>
+</p>
 
 <form action='/requests' method='post'>
+
   <label for='date'>What day do you wish to stay?</label>
-  <input id='date_field' type='date' name='date'>
+  <input id='date-field' type='date' name='date'>
+
   <label for='no_guests'>Number of guests:</label>
-  <input id='number_of_guests' type='text' name='no_guests'>
+  <select id='number-of-guests' name='no_guests'>
+    <% (1..@space.capacity).each do |number| %>
+    <option value='<%=number%>'><%=number%></option>
+    <%end%>
+  </select>
+
   <input id='submit' type='submit' value="Book"/>
 </form>

@@ -10,12 +10,9 @@ feature 'Request guest number' do
     list_property(space)
     sign_up(user2)
     visit '/spaces/view'
-    visit '/spaces/view'
-    click_link "space-title-5"
-    fill_in "date_field", with: "2017-01-01"
-    fill_in "number_of_guests", with: '5'
-    click_button "Book"
-
-    expect(page).to have_content("Maximum number of guests exceeded.")
+    page.all(:link, "London")[0].click
+    fill_in "date-field", with: "2017-01-01"
+    expect(page).to have_xpath '//select[@id="number-of-guests"]'
+    expect{select "5", from: "number-of-guests"}.to raise_error Capybara::ElementNotFound
   end
 end
