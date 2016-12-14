@@ -44,7 +44,7 @@ RSpec.feature "Adding new space", :type => :feature do
   scenario "I shouldn't be able to list a property as a visitor" do
     log_out
     visit '/spaces/new'
-    list_property(penthouse)
+    expect(current_path).to eq('/sessions/new')
     expect(page).to have_content "Something went wrong. Make sure you're logged in!"
   end
 end
