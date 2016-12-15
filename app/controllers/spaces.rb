@@ -26,14 +26,15 @@ class MakersBNB < Sinatra::Base
       redirect '/spaces/new'
     end
     @filename = "default.jpg"
+    # require 'pry'; binding.pry
     if params[:file]
-    @filename = params[:file][:filename]
-    file = params[:file][:tempfile]
-    File.open("./app/public/images/#{@filename}", 'w') do |f|
-      f.write(file.read)
+      @filename = params[:file][:filename]
+      file = params[:file][:tempfile]
+      File.open("./app/public/images/#{@filename}", 'w') do |f|
+        f.write(file.read)
+      end
     end
-    end
-      space = Space.new params
+      space = Space.new params, @filename
     if !space.is_available?(date)
       flash.next[:error] = ["End date cannot precede start date"]
       redirect '/spaces/new'
