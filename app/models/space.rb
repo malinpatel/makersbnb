@@ -16,14 +16,14 @@ class Space
 
   validates_presence_of :name, :price, :start_date, :end_date, :capacity
 
-  def initialize params
+  def initialize params, image="default.jpg"
     self.name = params[:name]
     self.description = params[:description]
     self.price = params[:price]
     self.start_date = params[:start_date]
     self.end_date = params[:end_date]
     self.capacity = params[:capacity].to_i
-    self.image = "./app/public/images/#{@filename}"
+    self.image = "/images/#{image}"
   end
 
   def is_available? date

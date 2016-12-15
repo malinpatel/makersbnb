@@ -11,7 +11,7 @@
       <% Space.all.reverse.each do |space| %>
       <div class="col-md-3 col-sm-6 hero-feature">
         <div id='space-box' class="thumbnail">
-          <img src="/assets/800.jpg" alt="">
+          <img src="<%=space.image%>" alt="">
           <div class="caption">
             <a class='links' id='space-title-<%=space.id%>' href="/spaces/<%=space.id%>"><%=space.name%></a>
             <p id='space-description'>
