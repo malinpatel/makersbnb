@@ -20,6 +20,10 @@ class MakersBNB < Sinatra::Base
 
   post '/spaces' do
     space = Space.new params
+    if !space.is_available?(Date.parse params[:start_date])
+      flash.next[:error] = ["End date cannot precede start date"]
+      redirect '/spaces/new'
+    end
     current_user.spaces << space
     if space.save
       flash.next[:notice] = ["Your property #{space.name} has been listed."]
