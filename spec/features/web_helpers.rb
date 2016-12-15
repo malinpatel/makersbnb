@@ -37,10 +37,10 @@ module Helpers
   end
 end
 
-def make_request(space)
+def make_request space=nil
   visit '/spaces/view'
-  click_link "space-title-#{space.id}"
-  click_button "Book"
+  page.find(:xpath, '//a[contains(@id, "space-title")][1]').click
+  click_button 'Book'
   fill_in "date-field", with: "2017-01-01"
   select '4', from: "number-of-guests"
   click_button "Book"
