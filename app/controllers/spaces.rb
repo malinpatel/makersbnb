@@ -19,8 +19,14 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/spaces' do
-    space = Space.new params
-    if !space.is_available?(Date.parse params[:start_date])
+    begin
+      date = Date.parse params[:start_date]
+    rescue
+      flash.next[:error] = ["Please enter correct dates to list a space"]
+      redirect '/spaces/new'
+    end
+      space = Space.new params
+    if !space.is_available?(date)
       flash.next[:error] = ["End date cannot precede start date"]
       redirect '/spaces/new'
     end

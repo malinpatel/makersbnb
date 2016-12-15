@@ -9,9 +9,12 @@ class Space
   property :start_date, Date
   property :end_date, Date
   property :capacity, Integer
+  property :image, FilePath
 
   belongs_to :user
   has n, :requests
+
+  validates_presence_of :name, :price, :start_date, :end_date, :capacity
 
   def initialize params
     self.name = params[:name]
@@ -36,5 +39,5 @@ class Space
       return false if date == request.date
     end
   end
-  
+
 end
