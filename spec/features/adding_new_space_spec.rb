@@ -18,7 +18,7 @@ RSpec.feature "Adding new space", :type => :feature do
     capacity: 2,
     start_date: '2016-01-01',
     end_date: '2018-01-01'} end
-  
+
   let(:flat) do
     {name: "3 bedroom flat",
     description: ' ' ,
