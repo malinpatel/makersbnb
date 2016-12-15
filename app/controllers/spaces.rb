@@ -25,10 +25,13 @@ class MakersBNB < Sinatra::Base
       flash.next[:error] = ["Please enter correct dates to list a space"]
       redirect '/spaces/new'
     end
+    @filename = "default.jpg"
+    if params[:file]
     @filename = params[:file][:filename]
     file = params[:file][:tempfile]
     File.open("./app/public/images/#{@filename}", 'w') do |f|
       f.write(file.read)
+    end
     end
       space = Space.new params
     if !space.is_available?(date)
