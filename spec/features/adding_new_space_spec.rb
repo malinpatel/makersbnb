@@ -18,6 +18,15 @@ RSpec.feature "Adding new space", :type => :feature do
     capacity: 2,
     start_date: '2016-01-01',
     end_date: '2018-01-01'} end
+  
+  let(:flat) do
+    {name: "3 bedroom flat",
+    description: ' ' ,
+    price: ' ',
+    capacity: 2,
+    start_date: ' ',
+    end_date: ' ' } end
+
 
   before :each  do
     user = {first_name: "Malin", last_name: "Patel", username: "malina", email: "malina@gmail.com", password: "gugu123"}
@@ -60,5 +69,10 @@ RSpec.feature "Adding new space", :type => :feature do
     message = "End date cannot precede start date"
     expect(page).to have_content(message)
     expect(Space.all.count).to eq (space_count + 2)
+
+  scenario "I want to receive a notice if I try to add a space with incomplete fields" do
+    list_property(flat)
+    expect(current_path).to eq('/spaces/new')
+    expect(page).to have_content("Please fill in all the fields")
   end
 end
