@@ -76,8 +76,4 @@ RSpec.feature "Adding new space", :type => :feature do
     expect(current_path).to eq('/spaces/new')
     expect(page).to have_content("Please enter correct dates to list a space")
   end
-
-  scenario "I want to upload a picture when listing a space" do
-
-  end
 end
