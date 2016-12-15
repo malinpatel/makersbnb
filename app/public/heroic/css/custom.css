@@ -4,8 +4,14 @@ html {
 }
 
 #logo {
-  width: 17%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
   float: left;
+}
+
+#logoli {
+  width: 100px;
 }
 .nav {
   display: inline;
