@@ -13,16 +13,18 @@ feature "Creating new requests" do
     sign_up(user)
     list_property(space)
     sign_up(user2)
-    make_request(Space.first)
+
   end
 
   scenario "a guest creates a new request" do
-    expect(current_path).to eq('/spaces/view')
+    make_request(Space.first)
+    expect(current_path).to eq('/requests/view')
     expect(Request.count).to eq 1
     expect(page).to have_content("Your booking request for London Penthouse has been sent to the owner")
   end
 
   scenario "A guest tries to request an unavailable date" do
+    make_request(Space.first)
     log_out
     log_in user
     visit '/requests/view'
@@ -34,12 +36,25 @@ feature "Creating new requests" do
     expect(Request.count).to eq 1
   end
 
-  scenario "I can't book a place if I am not looged in" do
+  scenario "I can't book a place if I am not logged in" do
     log_out
-    visit '/requests/view'
+    visit '/spaces/view'
     click_link "London Penthouse"
     click_button 'Book'
     expect(current_path).to eq('/users/new')
     expect(page).to have_content ("Sign up to book your space")
+  end
+
+  scenario "A guest cannot book with incorrect date format" do
+    visit '/spaces/view'
+    click_link "London Penthouse"
+    click_button 'Book'
+    fill_in "date-field", with: "yyyy-mm-dd"
+    select '4', from: "number-of-guests"
+    click_button "Book"
+    expect(current_path).to eq('/requests/new')
+    message = "Please enter a correct date to book"
+    expect(page).to have_content(message)
+
   end
 end
