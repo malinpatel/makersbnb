@@ -3,11 +3,14 @@
     <img src="/assets/800.jpg" alt="">
   </header>
   <div id='space-id'>
-
     <h1> <%=@space.name%> </h1>
-    <h2> Price: <%=@space.price%> per day </h2>
-    <p> Description: <%=@space.description %>  </p>
-    <p> Maximum Capacity: <%=@space.capacity %> </p>
+    <hr>
+    <div id='space-id-text'>
+
+      <h4> Price:</h4><p> £<%=@space.price%> ppn </p>
+      <h4> Description:</h4><p> <%=@space.description %>  </p>
+      <h4> Maximum Capacity:</h4><p> <%=@space.capacity %></p>
+  </div>
     <p id='dates'></p>
     <form  action='/requests/new' method='get'>
       <input class="btn btn-primary btn-large" type='submit' value='Book'/>

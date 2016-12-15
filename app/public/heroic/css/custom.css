@@ -59,9 +59,12 @@ a.links:link {
 
 #space-id {
   float: right;
-  color: red;
   margin-top: 2.5%;
   padding-left: 20px;
+}
+
+#space-id-text {
+  text-align: left;
 }
 
 #container {
