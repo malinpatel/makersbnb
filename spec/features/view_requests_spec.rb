@@ -54,7 +54,6 @@ feature "viewing requests" do
           expect(page).to have_content "2017-01-01"
         end
         click_link '2017-01-01'
-        expect(current_path).to eq '/requests/1'
         expect(page).to have_content "Request for London Penthouse"
         expect(page).to have_content "On date: 2017-01-01"
         expect(page).to have_content "Status: pending"
