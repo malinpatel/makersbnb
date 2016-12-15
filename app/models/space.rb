@@ -9,9 +9,12 @@ class Space
   property :start_date, Date
   property :end_date, Date
   property :capacity, Integer
+  property :image, FilePath
 
   belongs_to :user
   has n, :requests
+
+  validates_presence_of :name, :price, :start_date, :end_date, :capacity
 
   def initialize params
     self.name = params[:name]
@@ -20,6 +23,7 @@ class Space
     self.start_date = params[:start_date]
     self.end_date = params[:end_date]
     self.capacity = params[:capacity].to_i
+    self.image = "./app/public/images/#{params[:file][:filename]}"
   end
 
   def is_available? date
@@ -36,5 +40,5 @@ class Space
       return false if date == request.date
     end
   end
-  
+
 end
