@@ -18,4 +18,13 @@ class Request
     self.accepted = false
   end
 
+  def pending?
+    !(self.accepted && self.rejected)
+  end
+
+  def status
+    return "pending" if pending?
+    return "accepted" if self.accepted
+    return "rejected" if self.rejected
+  end
 end

@@ -53,7 +53,10 @@ class MakersBNB < Sinatra::Base
     request.rejected = true unless params[:accepted]
     request.save
     redirect 'requests/view'
-
   end
 
+  get '/requests/:req_id' do
+    @req = Request.get params[:req_id]
+    erb :'requests/id'
+  end
 end

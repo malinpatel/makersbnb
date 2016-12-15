@@ -1,0 +1,5 @@
+<h2>Request for <a id='space-link-<%=@req.space.id%>' href='/spaces/<%=@req.space.id%>'><%=@req.space.name%></a> </h2>
+<h4>On date: <%=@req.date%> </h4>
+<h4>Status: <%=@req.status%> </h4>
+<h4>For: <%=@req.no_guests%> <%=@req.no_guests.to_i > 1 ? "Guests" : "Guest"%></h4>
+<h4>Owned by <%=@req.space.user.username%> </h4>
