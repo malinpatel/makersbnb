@@ -30,13 +30,13 @@ feature "Creating new requests" do
     log_out
     sign_up user3
     make_request(Space.first)
-    expect(page).to have_content "Sorry, London Penthouse is unavailable on 2017-01-01"
+    expect(page).to have_content "Sorry, London Penthouse is unavailable on 01/01/2017"
     expect(Request.count).to eq 1
   end
 
   scenario "I can't book a place if I am not looged in" do
     log_out
-    visit '/requests/view'
+    visit '/spaces/view'
     click_link "London Penthouse"
     click_button 'Book'
     expect(current_path).to eq('/users/new')
