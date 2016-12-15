@@ -53,7 +53,6 @@ class MakersBNB < Sinatra::Base
     request.rejected = true unless params[:accepted]
     request.save
     redirect 'requests/view'
-
   end
 
 end

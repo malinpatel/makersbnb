@@ -51,6 +51,13 @@ feature "viewing requests" do
         within "div#requests-made" do
           expect(page).to have_content "Requests I have made"
           expect(page).to have_content penthouse[:name]
+          expect(page).to have_content "2017-01-01"
+          click_link 'request-link-1'
+          expect(page).to have_content "Request for London Penthouse"
+          expect(page).to have_content "On date 2007-01-01"
+          expect(page).to have_content "Status: pending"
+          expect(page).to have_content "For: 4 Guests"
+          expect(page).to have_content "Owned by malina"
         end
       end
 
