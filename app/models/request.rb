@@ -19,7 +19,7 @@ class Request
   end
 
   def pending?
-    !(self.accepted && self.rejected)
+    !(self.accepted || self.rejected)
   end
 
   def status
