@@ -10,9 +10,9 @@
       <% Space.all.reverse.each do |space| %>
       <div class="col-md-3 col-sm-6 hero-feature">
         <div id='space-box' class="thumbnail">
-          <img src="http://placehold.it/800x500" alt="">
+          <img src="/assets/800.jpg" alt="">
           <div class="caption">
-            <a id='space-title-<%=space.id%>' href="/spaces/<%=space.id%>"><%=space.name%></a>
+            <a class='links' id='space-title-<%=space.id%>' href="/spaces/<%=space.id%>"><%=space.name%></a>
             <p id='space-description'>
               <%=space.description%>
             </p>
