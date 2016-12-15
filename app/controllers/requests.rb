@@ -55,4 +55,8 @@ class MakersBNB < Sinatra::Base
     redirect 'requests/view'
   end
 
+  get '/requests/:req_id' do
+    @req = Request.get params[:req_id]
+    erb :'requests/id'
+  end
 end

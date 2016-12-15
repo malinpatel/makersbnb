@@ -2,7 +2,7 @@
   <h2>Requests I have made:</h2>
   <% current_user.requests.each do |request| %>
     <h3> <a id='space-link-<%=request.space.id%>' href='/spaces/<%=request.space.id%>'><%=request.space.name%></a></h3>
-    <h4> <a id='request-link-<%=request.id%>' href='/request/<%=request.id%>' > <%=request.date%> </a> </h4>
+    <h4> <a id='request-link-<%=request.id%>' href='/requests/<%=request.id%>' > <%=request.date%> </a> </h4>
   <%end%>
 </div>
 <div id='requests-received'>
