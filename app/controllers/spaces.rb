@@ -21,7 +21,12 @@ class MakersBNB < Sinatra::Base
   post '/spaces' do
     space = Space.new params
     current_user.spaces << space
-    flash.next[:notice] = ["Your property #{space.name} has been listed."] if space.save
-    redirect '/spaces/view'
+    if space.save
+      flash.next[:notice] = ["Your property #{space.name} has been listed."]
+      redirect '/spaces/view'
+    else
+      flash.next[:notice] = ["Please fill in all the fields"]
+      redirect '/spaces/new'
+    end
   end
 end
