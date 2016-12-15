@@ -27,7 +27,7 @@ class MakersBNB < Sinatra::Base
         redirect '/requests/view'
       end
     else
-      flash.next[:error] = ["Sorry, #{space.name} is unavailable on #{params[:date]}"]
+      flash.next[:error] = ["Sorry, #{space.name} is unavailable on #{Date.parse params[:date]}"]
       redirect 'spaces/view'
     end
     rescue
