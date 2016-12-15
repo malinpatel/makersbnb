@@ -15,7 +15,10 @@ class User
   has n, :requests
 
   attr_reader :password
+  attr_accessor :password_confirmation
 
+  validates_confirmation_of :password
+  validates_presence_of :email, :username, :first_name, :last_name, :password_digest
   validates_uniqueness_of :username, :email
   validates_format_of :email, :as => :email_address
 
@@ -25,9 +28,11 @@ class User
     self.password = params[:password]
     self.first_name = params[:first_name]
     self.last_name = params[:last_name]
+    self.password_confirmation = params[:password_confirmation]
   end
 
   def password= password
+    @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
 
