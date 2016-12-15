@@ -6,6 +6,7 @@ module Helpers
     fill_in 'username', with: hash[:username]
     fill_in "email", with: hash[:email]
     fill_in "password", with: hash[:password]
+    fill_in "password_confirmation", with: hash[:password]
     click_button "submit"
   end
 
