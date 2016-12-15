@@ -10,7 +10,7 @@ feature 'Approving requests' do
       end_date: '2018-01-01',
       capacity: '4'}
      end
-      scenario "I want to approve a request" do
+      scenario "that I have received" do
         user = {first_name: "Malin", last_name: "Patel", username: "malina", email: "malina@gmail.com", password: "gugu123"}
         sign_up(user)
         list_property(penthouse)
