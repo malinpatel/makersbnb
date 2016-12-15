@@ -23,6 +23,7 @@ class Space
     self.start_date = params[:start_date]
     self.end_date = params[:end_date]
     self.capacity = params[:capacity].to_i
+    self.image = "./app/public/images/#{params[:file][:filename]}"
   end
 
   def is_available? date

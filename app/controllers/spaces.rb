@@ -25,6 +25,11 @@ class MakersBNB < Sinatra::Base
       flash.next[:error] = ["Please enter correct dates to list a space"]
       redirect '/spaces/new'
     end
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+    File.open("./app/public/images/#{@filename}", 'w') do |f|
+      f.write(file.read)
+    end
       space = Space.new params
     if !space.is_available?(date)
       flash.next[:error] = ["End date cannot precede start date"]
