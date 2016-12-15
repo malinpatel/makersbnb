@@ -35,7 +35,7 @@
       </div>
     </nav>
     <div id="welcome">
-      <h1 > Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
+    
       <% if flash[:notice] %>
       <h3><%= flash[:notice].join(" ") %></h3>
       <% end %>
