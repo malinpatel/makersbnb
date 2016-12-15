@@ -20,7 +20,7 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav" id="navigation-bar">
-            <li><img id="logo" src="/assets/logo.png"/></li>
+            <li id="logoli"><img id="logo" src="/assets/logo.png"/></li>
             <li class="navigation-item"> <a id='list_space' href='/spaces/new'> List space </a></li>
             <li class="navigation-item"> <a id='view_spaces' href='/spaces/view'> View spaces </a></li>
             <li class="navigation-item"> <a id='view_requests' href='/requests/view'> View requests </a></li>
@@ -35,7 +35,7 @@
       </div>
     </nav>
     <div id="welcome">
-    
+
       <% if flash[:notice] %>
       <h3><%= flash[:notice].join(" ") %></h3>
       <% end %>
