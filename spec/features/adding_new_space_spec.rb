@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.feature "Adding new space", :type => :feature do
   include Helpers
+  space_count = Space.all.count
   let(:penthouse) do
     {name: "London Penthouse",
     description: "Lovely big city flat in Whitechapel E1",
@@ -17,6 +18,7 @@ RSpec.feature "Adding new space", :type => :feature do
     capacity: 2,
     start_date: '2016-01-01',
     end_date: '2018-01-01'} end
+
   before :each  do
     user = {first_name: "Malin", last_name: "Patel", username: "malina", email: "malina@gmail.com", password: "gugu123"}
     sign_up(user)
@@ -25,14 +27,10 @@ RSpec.feature "Adding new space", :type => :feature do
   end
 
   scenario "User adds new space for rent" do
-    space_count = Space.all.count
-    space = {name: "London Penthouse", capacity: 4, description: "3 bed, 1 swimming pool, in-house chef", price: "100", start_date: "2017-01-07", end_date: "2017-01-07"}
-    list_property(space)
-
     expect(current_path).to eq('/spaces/view')
-    message = "Your property London Penthouse has been listed."
+    message = "Your property Baldrick's Hovel has been listed."
     expect(page).to have_content(message)
-    expect(Space.all.count).to eq (space_count + 1)
+    expect(Space.all.count).to eq (space_count + 2)
   end
 
   scenario "I want to select my dates from a calendar" do
@@ -46,5 +44,21 @@ RSpec.feature "Adding new space", :type => :feature do
     visit '/spaces/new'
     expect(current_path).to eq('/sessions/new')
     expect(page).to have_content "Something went wrong. Make sure you're logged in!"
+  end
+
+  scenario "Listed property needs to have some availability" do
+    visit '/spaces/new'
+    fill_in "name", with: "Marceline's Cave"
+    fill_in "description", with: "Neat lil cave by the sea"
+    fill_in "price", with: 60
+    fill_in "start_date", with: '2016-12-24'
+    fill_in "end_date", with: '2016-12-12'
+    select 12, from: "capacity"
+    click_button "List space"
+
+    expect(current_path).to eq('/spaces/new')
+    message = "End date cannot precede start date"
+    expect(page).to have_content(message)
+    expect(Space.all.count).to eq (space_count + 2)
   end
 end
