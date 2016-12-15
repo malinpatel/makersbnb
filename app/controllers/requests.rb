@@ -5,33 +5,39 @@ class MakersBNB < Sinatra::Base
       @space = Space.get session[:space_id]
       erb :'requests/new'
     else
-      flash.next[:notice] = ["Sign up to book your space"]
+      flash.next[:error] = ["Sign up to book your space"]
       redirect '/users/new'
     end
   end
 
   post '/requests' do
     space = Space.get(session[:space_id])
+    begin
     if space.is_available? Date.parse params[:date]
       request = Request.new params
       current_user.requests << request
       space.requests << request
-
       if request.no_guests.to_i  > space.capacity
         flash.next[:error] = ["Maximum number of guests exceeded."]
         redirect "spaces/#{space.id}"
       else
-        if request.save
-          flash.next[:notice] = ["Your booking request for #{space.name} has been sent to the owner"]
-          session[:space_id] = nil
-        end
+        request.save
+        flash.next[:notice] = ["Your booking request for #{space.name} has been sent to the owner"]
+        session[:space_id] = nil
+        redirect '/requests/view'
       end
-
     else
-      flash.next[:error] = ["Sorry, #{space.name} is unavailable on #{params[:date]}"]
+      flash.next[:error] = ["Sorry, #{space.name} is unavailable on #{Date.parse params[:date]}"]
+      redirect 'spaces/view'
     end
-    redirect 'spaces/view'
+    rescue
+      flash.next[:error] = ["Please enter a correct date to book"]
+      redirect '/requests/new'
+    end
   end
+
+
+
 
   get '/requests/view' do
     if current_user
