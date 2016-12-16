@@ -7,11 +7,7 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/' do
-    if current_user
-      erb :'spaces/view'
-    else
-      erb :'users/new'
-    end
+    erb :index
   end
 
 end
