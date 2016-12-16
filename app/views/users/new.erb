@@ -1,14 +1,25 @@
-Please sign up
-<form action='/users' method='post'>
-  <label for="firstname">First Name: </label>
-    <input id='first_name' type="text" name="first_name" />
-  <label for="last-name">Last Name: </label>
-    <input id='last_name' type="text" name="last_name" />
-  <label for="username">Username:</label>
-    <input id='username' type="text" name="username" />
-  <label for="email">Email:</label>
-    <input id='email' type="text" name="email" />
-  <label for="password">Password:</label>
-    <input id='password' type="password" name="password" />
-  <input id='submit' type="submit" value="Sign up" />
-</form>
+
+<div class='input-group'>
+  <form class='form' action='/users' method='post'>
+    <h2>Please sign up</h2>
+    <div class="form-group">
+      <input id='first_name' type="text" placeholder="First Name" name="first_name" />
+    </div>
+    <div class="form-group">
+      <input id='last_name' type="text" placeholder="Last Name" name="last_name" />
+    </div>
+    <div class="form-group">
+      <input id='username' type="text" placeholder="Username" name="username" />
+    </div>
+    <div class="form-group">
+      <input id='email' type="email" placeholder="Email" name="email" />
+    </div>
+    <div class="form-group">
+      <input id='password' type="password" placeholder="Password" name="password" />
+    </div>
+    <div class="form-group">
+      <input id='password-confirmation' type="password" placeholder="Confirm Password" name="password_confirmation" />
+    </div>
+    <input id='submit' type="submit" value="Sign up" />
+  </form>
+</div>

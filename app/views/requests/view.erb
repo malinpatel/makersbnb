@@ -1,0 +1,58 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2>Requests I have made: </h2>
+    </div>
+  </div>
+  <div class="row text-center" id='requests-made'>
+    <% current_user.requests.each do |request| %>
+    <div class="col-md-3 col-sm-6 hero-feature">
+      <div id='space-box' class="thumbnail">
+        <img src="/assets/800.jpg" alt="">
+        <div class="caption">
+          <a id='space-link-<%=request.space.id%>' href='/spaces/<%=request.space.id%>'><%=request.space.name%></a>
+          <a id='request-link-<%=request.id%>' href='/requests/<%=request.id%>' > <%=request.date%> </a>
+        </div>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>
+
+  <div class="row">
+      <div class="col-lg-12">
+          <h2>Requests I have received: </h2>
+      </div>
+  </div>
+  <div class="row text-center" id='requests-received'>
+    <% current_user.spaces.each do |space| %>
+    <% space.requests.each do |request| %>
+    <div class="col-md-3 col-sm-6 hero-feature">
+      <div id='space-box' class="thumbnail">
+        <img src="<%=space.image%>" alt="">
+        <div class="caption">
+          <a href='/spaces/<%=space.id%>'><%=space.name%></a>
+          <span>Request from: <%=request.user.username%> </span>
+    <% if request.status == "pending" %>
+    <div id='request-forms' >
+    <form class='request-forms' action='/requests/view' method='post'>
+      <input type='hidden' name="request_id"  value="<%=request.id%>"/>
+      <input name = "reply" id='approve-request' type="submit" value="approve" />
+      <input name = "reply" id='reject-request' type="submit" value="reject" />
+    </form>
+  </div>
+    <% elsif request.accepted %>
+    <p> Request accepted </p>
+    <% elsif request.rejected %>
+    <p> Request denied </p>
+    <% end %>
+  </div>
+</div>
+</div>
+    <%end%>
+    <%end%>
+  </div>
+
+</div>
+</div>
