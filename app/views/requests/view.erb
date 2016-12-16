@@ -12,7 +12,7 @@
         <img class="image" src="<%= request.space.image%>" alt="">
         <div class="caption">
           <p><%=request.status %></p>
-          <a id='space-link-<%=request.space.id%>' href='/spaces/<%=request.id%>'><%=request.space.name%></a>
+          <a id='space-link-<%=request.space.id%>' href='/requests/<%=request.id%>'><%=request.space.name%></a>
           <a id='request-link-<%=request.id%>' href='/requests/<%=request.id%>' > <%=request.date%> </a>
         </div>
       </div>
@@ -39,8 +39,8 @@
         <div id='request-forms' >
           <form class='request-forms' action='/requests/view' method='post'>
             <input type='hidden' name="request_id"  value="<%=request.id%>"/>
-            <input name = "reply" id='approve-request' type="submit" value="approve" />
-            <input name = "reply" id='reject-request' type="submit" value="reject" />
+            <input name = "reply" id='approve-request' type="submit" value="Approve" />
+            <input name = "reply" id='reject-request' type="submit" value="Reject" />
           </form>
         </div>
         <% elsif request.accepted %>
