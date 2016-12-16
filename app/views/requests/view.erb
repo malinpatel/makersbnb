@@ -12,7 +12,7 @@
         <img class="image" src="<%= request.space.image%>" alt="">
         <div class="caption">
           <p><%=request.status %></p>
-          <a id='space-link-<%=request.space.id%>' href='/spaces/<%=request.id%>'><%=request.space.name%></a>
+          <a id='space-link-<%=request.space.id%>' href='/requests/<%=request.id%>'><%=request.space.name%></a>
           <a id='request-link-<%=request.id%>' href='/requests/<%=request.id%>' > <%=request.date%> </a>
           <form action='/requests/<%=request.id%>' method='get'>
             <input class='view-request' type='submit' value='View Request'/>
