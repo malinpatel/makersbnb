@@ -43,7 +43,7 @@
           <form action='/requests/<%=request.id%>' method='get'>
             <input class='view-request' type='submit' value='View Request'/>
           </form>
-    <% if request.status == "pending" %>
+    <% if request.pending? %>
     <div id='request-forms' >
     <form class='request-forms' action='/requests/view' method='post'>
       <input type='hidden' name="request_id"  value="<%=request.id%>"/>

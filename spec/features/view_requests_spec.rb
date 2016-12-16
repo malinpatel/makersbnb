@@ -56,7 +56,7 @@ feature "viewing requests" do
         click_button 'View Request'
         expect(page).to have_content "Request for London Penthouse"
         expect(page).to have_content "On date: 2017-01-01"
-        expect(page).to have_content "Status: pending"
+        expect(page).to have_content "Status: Pending"
         expect(page).to have_content "For: 4 Guests"
         expect(page).to have_content "Owned by malina"
       end
