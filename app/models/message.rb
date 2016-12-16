@@ -5,14 +5,13 @@ class Message
 
  property :id, Serial
  property :time, DateTime
- property :sender, Integer
  property :content, Text
 
  belongs_to :request
+ belongs_to :user
 
  def initialize params
    self.time = DateTime.now
-   self.sender = params[:user_id]
    self.content = params[:content]
  end
 
