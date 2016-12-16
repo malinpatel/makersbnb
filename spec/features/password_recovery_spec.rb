@@ -30,6 +30,5 @@ feature 'Resetting password' do
 
   scenario "assigned a rest token to the user when they recover" do
     expect{recover_password}.to change{User.first.password_token}
-
   end
 end

@@ -3,6 +3,7 @@ require 'spec_helper'
 
 
 describe User do
+
   let(:params) do
     {username: "malina",
     password: 'gugu123',
@@ -18,5 +19,8 @@ describe User do
       user.save
       expect(User.count).to eq count
     end
+  end
+  it "should generate a token" do
+    expect{user.generate_token}.to change{user.password_token}
   end
 end

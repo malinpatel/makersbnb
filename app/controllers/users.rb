@@ -21,8 +21,7 @@ class MakersBNB < Sinatra::Base
   post '/users/recover' do
     flash.next[:notice] = ['Please check your inbox']
     user = User.first(email: params[:email])
-    user.password_token = "SFD"
-    user.save
+    user.generate_token
     redirect '/users/recover'
   end
 
