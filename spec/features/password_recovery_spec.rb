@@ -28,12 +28,7 @@ feature 'Resetting password' do
     expect(page).to have_content("Please check your inbox")
   end
 
-
-
   scenario "assigned a rest token to the user when they recover" do
-    require 'pry'; binding.pry
     expect{recover_password}.to change{User.first.password_token}
-
-
   end
 end
