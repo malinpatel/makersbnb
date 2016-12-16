@@ -23,9 +23,6 @@ class MakersBNB < Sinatra::Base
     user = User.first(email: params[:email])
     user.password_token = "SFD"
     user.save
-
-    # require 'pry'; binding.pry
-    # user.password_token = "dfsdfs"
     redirect '/users/recover'
   end
 
