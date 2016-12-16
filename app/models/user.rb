@@ -10,6 +10,7 @@ class User
   property :last_name, String
   property :username, String, unique: true
   property :password_digest, Text
+  property :password_token, String, length: 60
 
   has n, :spaces
   has n, :requests
@@ -30,6 +31,7 @@ class User
     self.first_name = params[:first_name]
     self.last_name = params[:last_name]
     self.password_confirmation = params[:password_confirmation]
+    self.password_token = params[:password_token]
   end
 
   def password= password
