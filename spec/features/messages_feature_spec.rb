@@ -38,10 +38,8 @@ feature "Sending Messages between host and guest" do
     click_link '2017-01-01'
     fill_in :'message-new-box', with: "Do you accept pets?"
     click_button "Send"
-    within '#message-container' do
-      expect(page).to have_content "Do you accept pets?"
-      expect(page).to have_content "test"
-    end
+    expect(page).to have_content "Do you accept pets?"
+    expect(page).to have_content "test"
   end
 
   xscenario "Host wants to reply to message" do
