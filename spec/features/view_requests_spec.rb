@@ -49,7 +49,7 @@ feature "viewing requests" do
       scenario "View requests I have made" do
         visit '/requests/view'
         within "div#requests-made" do
-          expect(page).to have_content "Requests I have made"
+
           expect(page).to have_content penthouse[:name]
           expect(page).to have_content "2017-01-01"
         end
@@ -66,7 +66,7 @@ feature "viewing requests" do
         log_in user
         visit '/requests/view'
         within 'div#requests-received' do
-          expect(page).to have_content "Requests I have received"
+    
           expect(page).to have_content penthouse[:name]
           expect(page).to have_content "Request from"
           expect(page).to have_content user2[:username]
