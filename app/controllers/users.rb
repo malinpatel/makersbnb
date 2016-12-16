@@ -13,4 +13,12 @@ class MakersBNB < Sinatra::Base
       redirect '/users/new'
     end
   end
+
+  get '/users/recover' do
+      erb :'users/recover'
+  end
+  post '/users/recover' do
+    flash.next[:notice] = ['Please check your inbox']
+    redirect '/users/recover'
+  end
 end

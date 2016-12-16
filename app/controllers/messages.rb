@@ -5,7 +5,6 @@ class MakersBNB < Sinatra::Base
     request = Request.get params[:request_id]
     current_user.messages << message
     request.messages << message
-
     message.save
     redirect "/requests/#{params[:request_id]}"
   end
