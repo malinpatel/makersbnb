@@ -46,3 +46,9 @@ def make_request space=nil
   select '4', from: "number-of-guests"
   click_button "Book"
 end
+
+def recover_password
+  visit '/users/recover'
+  fill_in :email, with: "malina@gmail.com"
+  click_button "Submit"
+end

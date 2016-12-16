@@ -17,8 +17,17 @@ class MakersBNB < Sinatra::Base
   get '/users/recover' do
       erb :'users/recover'
   end
+
   post '/users/recover' do
     flash.next[:notice] = ['Please check your inbox']
+    user = User.first(email: params[:email])
+    user.password_token = "SFD"
+    user.save
+
+    # require 'pry'; binding.pry
+    # user.password_token = "dfsdfs"
     redirect '/users/recover'
   end
+
+
 end
