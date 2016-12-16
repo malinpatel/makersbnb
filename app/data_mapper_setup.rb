@@ -7,6 +7,8 @@ DataMapper.setup(:default, database)
 require_relative 'models/user'
 require_relative 'models/space'
 require_relative 'models/request'
+require_relative 'models/message'
+
 
 DataMapper.finalize
 DataMapper.auto_upgrade!

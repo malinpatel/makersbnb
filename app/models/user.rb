@@ -13,6 +13,7 @@ class User
 
   has n, :spaces
   has n, :requests
+  has n, :messages
 
   attr_reader :password
   attr_accessor :password_confirmation

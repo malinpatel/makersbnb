@@ -10,6 +10,7 @@ class Request
 
   belongs_to  :space
   belongs_to  :user
+  has n, :messages
 
   def initialize params
     self.date = params[:date]
