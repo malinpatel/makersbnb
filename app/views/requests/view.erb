@@ -9,7 +9,7 @@
     <% current_user.requests.each do |request| %>
     <div class="col-md-3 col-sm-6 hero-feature">
       <div id='space-box' class="thumbnail">
-        <img class="image" src="<%= request.space.image%>" alt="">
+        <img  src="<%= request.space.image%>" alt="">
         <div class="caption">
           <p><%=request.status %></p>
           <a id='space-link-<%=request.space.id%>' href='/requests/<%=request.id%>'><%=request.space.name%></a>
