@@ -1,5 +1,6 @@
 <div class='input-group'>
-  <form action='/spaces' method='post'>
+  <form class='form' action='/spaces' method='post' enctype="multipart/form-data">
+  
     <h3>List your property</h3>
     <div class="form-group">
       <input id='name' type="text" placeholder="Property Name" name="name" />
@@ -16,7 +17,7 @@
       </select>
     </div>
     <div class="form-group">
-      <input id='price' type="number" placeholder="Price" name="price" />  
+      <input id='price' type="number" placeholder="Price" name="price" />
 
     </div>
     <div class="form-group">
@@ -24,6 +25,9 @@
     </div>
     <div class="form-group">
       <input id='end_date' type="date" placeholder="Available to:" name="end_date" />
+    </div>
+    <div class="form-group">
+      <input type="file" name="file">
     </div>
     <div class="form-group">
       <input id='list_space' type="submit" value="List space" />

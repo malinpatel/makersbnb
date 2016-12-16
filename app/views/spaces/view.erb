@@ -1,18 +1,19 @@
-<div class="containter">
+<div class="container">
+    <h1 > Welcome <%= current_user ? current_user.first_name : "Visitor!"  %> </h1> </br>
 
   <!-- Title -->
       <div class="row">
           <div class="col-lg-12">
-              <h3>Trending properties</h3>
+              <h3>Tudor's Portfolio </h3>
           </div>
       </div>
     <div class="row text-center">
       <% Space.all.reverse.each do |space| %>
       <div class="col-md-3 col-sm-6 hero-feature">
         <div id='space-box' class="thumbnail">
-          <img src="http://placehold.it/800x500" alt="">
+          <img src="<%=space.image%>" alt="">
           <div class="caption">
-            <a id='space-title-<%=space.id%>' href="/spaces/<%=space.id%>"><%=space.name%></a>
+            <a class='links' id='space-title-<%=space.id%>' href="/spaces/<%=space.id%>"><%=space.name%></a>
             <p id='space-description'>
               <%=space.description%>
             </p>

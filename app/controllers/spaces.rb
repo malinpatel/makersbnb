@@ -19,7 +19,26 @@ class MakersBNB < Sinatra::Base
   end
 
   post '/spaces' do
-    space = Space.new params
+    begin
+      date = Date.parse params[:start_date]
+    rescue
+      flash.next[:error] = ["Please enter correct dates to list a space"]
+      redirect '/spaces/new'
+    end
+    @filename = "default.jpg"
+    # require 'pry'; binding.pry
+    if params[:file]
+      @filename = params[:file][:filename]
+      file = params[:file][:tempfile]
+      File.open("./app/public/images/#{@filename}", 'w') do |f|
+        f.write(file.read)
+      end
+    end
+      space = Space.new params, @filename
+    if !space.is_available?(date)
+      flash.next[:error] = ["End date cannot precede start date"]
+      redirect '/spaces/new'
+    end
     current_user.spaces << space
     if space.save
       flash.next[:notice] = ["Your property #{space.name} has been listed."]

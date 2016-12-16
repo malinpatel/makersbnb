@@ -1,6 +1,20 @@
+.request-forms {
+  width: 20%;
+}
+
+html {
+  margin: 30px;
+}
+
 #logo {
-  width: 17%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
   float: left;
+}
+
+#logoli {
+  width: 100px;
 }
 .nav {
   display: inline;
@@ -20,15 +34,20 @@
     font-weight: bold;
     color: white;
 }
-
+a.links:hover {
+  color: purple;
+}
+a.links:visited {
+  color: blue;
+}
+a.links:link {
+  color: LightCoral;
+}
 .navbar-inverse .navbar-text {
   color: white;
 }
 
-a:link {color: black;}
-a:hover {color: red;}
-
-form {
+.form {
   margin: auto;
   text-align: center;
   border-style: solid;
@@ -50,4 +69,26 @@ form {
 
 #welcome {
   text-align: center;
+}
+
+#space-id {
+  float: right;
+  margin-top: 2.5%;
+  padding-left: 20px;
+}
+
+#space-id-text {
+  text-align: left;
+}
+
+#container {
+  display: inline-block;
+}
+
+.jumbotron {
+  float: left;
+}
+
+#request-forms {
+  display: inline-block;
 }
