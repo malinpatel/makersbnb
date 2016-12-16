@@ -3,3 +3,9 @@
 <h4>Status: <%=@req.status%> </h4>
 <h4>For: <%=@req.no_guests%> <%=@req.no_guests.to_i > 1 ? "Guests" : "Guest"%></h4>
 <h4>Owned by <%=@req.space.user.username%> </h4>
+
+
+  <textarea id="message-new-box" name="comment" form="message_container">Enter text here...</textarea>
+  <form action="/messages" method="post">
+    <input type="submit" value="Send" />
+  </form>
