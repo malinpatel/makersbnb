@@ -1,29 +1,33 @@
+<div id='homepage'>
 <div id="logo-main-div"><img id="logo-main" src="/assets/logo.png"/></div>
 
+<div id='homepage-btns'>
 <% if current_user %>
 <div id="view-spaces">
   <form action='/spaces/view' method='get'>
-    <input type='submit' value="VIEW SPACES">
+    <input class='left-homepage-btn' type='submit' value="VIEW SPACES">
   </form>
 </div>
 
 <div id="view-requests">
   <form action='/requests/view' method='get'>
-    <input type='submit' value="VIEW REQUESTS">
+    <input class='right-homepage-btn' type='submit' value="VIEW REQUESTS">
   </form>
 </div>
 
 <% else %>
 <div id="sign-up">
   <form action='/users/new' method='get'>
-    <input type='submit' value="SIGN UP">
+    <input class='left-homepage-btn' type='submit' value="SIGN UP">
   </form>
 </div>
 
 <div id="log-in">
   <form action='/sessions/new' method='get'>
-    <input type='submit' value="LOG IN">
+    <input class='right-homepage-btn' type='submit' value="LOG IN">
   </form>
 </div>
 
 <% end %>
+</div>
+</div>

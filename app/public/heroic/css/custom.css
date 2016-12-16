@@ -117,3 +117,34 @@ a.links:link {
 .request-forms {
   width: 100%;
 }
+
+.left-homepage-btn {
+  border-color: black;
+  border-style: solid;
+  background-color: white;
+  float: left;
+  margin-left: 30%;
+  margin-right: 5%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  padding-right: 4%;
+  padding-left: 4%;
+}
+.right-homepage-btn {
+  border-style: solid;
+  border-color: black;
+  background-color: white;
+  float: right;
+  margin-left: 5%;
+  margin-right: 30%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  padding-right: 4%;
+  padding-left: 4%;
+}
+#homepage{
+  background-color: LightCoral;
+}
+#view-requests #log-in #view-spaces #sign-up{
+  display: inline-block;
+}
