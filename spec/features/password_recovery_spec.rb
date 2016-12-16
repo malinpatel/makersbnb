@@ -14,4 +14,8 @@ feature 'Resetting password' do
     click_button 'Submit'
     expect(page).to have_content("Please check your inbox")
   end
+
+  scenario "When I click the link in my email I want to reset my password" do
+    
+  end
 end
