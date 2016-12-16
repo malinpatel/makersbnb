@@ -94,6 +94,7 @@ a.links:link {
 
 #container {
   display: inline-block;
+  width: 30%;
 }
 
 .jumbotron {
@@ -164,4 +165,18 @@ a.links:link {
 }
 #view-requests #log-in #view-spaces #sign-up{
   display: inline-block;
+}
+#text-container{
+  padding-top: 20px;
+}
+#message-new-box{
+  width:30%;
+}
+#messages-container{
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+.message{
+  width: 100%;
 }
