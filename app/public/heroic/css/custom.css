@@ -1,3 +1,6 @@
+.request-forms {
+  width: 20%;
+}
 
 html {
   margin: 30px;
@@ -78,4 +81,8 @@ a.links:link {
 
 .jumbotron {
   float: left;
+}
+
+#request-forms {
+  display: inline-block;
 }
