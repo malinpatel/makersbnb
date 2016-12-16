@@ -13,6 +13,7 @@ feature 'Resetting password' do
       end
 
       before :each  do
+
         sign_up(user)
       end
 
@@ -35,15 +36,27 @@ feature 'Resetting password' do
   end
 
   scenario "it does not allow you to use the token after an hour" do
-    recover_password
     user_1 = User.create(first_name: "Malin",
      last_name: "Patel",
      username: "malina",
      email: "malina@gmail.com",
      password: "gugu123")
+    recover_password
     Timecop.travel(60 * 60 * 60) do
       visit("/users/reset_password?token=#{user_1.password_token}")
       expect(page).to have_content "Your token is invalid"
     end
   end
+
+  scenario 'it asks for your new password when your token is valid' do
+    user_1 = User.create(first_name: "Malin",
+     last_name: "Patel",
+     username: "malina",
+     email: "malina@gmail.com",
+     password: "gugu123")
+    recover_password
+    visit("/users/reset_password?token=#{user_1.password_token}")
+    expect(page).to have_content("Please enter your new password")
+  end
+
 end

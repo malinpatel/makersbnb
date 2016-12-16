@@ -26,7 +26,8 @@ class MakersBNB < Sinatra::Base
   end
 
   get '/users/reset_password' do
-    "Your token is invalid"
+
+    erb :'users/reset_password'
   end
 
 
