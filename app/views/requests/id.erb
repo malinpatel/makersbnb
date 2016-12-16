@@ -1,8 +1,12 @@
-<h2>Request for <a id='space-link-<%=@req.space.id%>' href='/spaces/<%=@req.space.id%>'><%=@req.space.name%></a> </h2>
-<h4>On date: <%=@req.date%> </h4>
-<h4>Status: <%=@req.status%> </h4>
-<h4>For: <%=@req.no_guests%> <%=@req.no_guests.to_i > 1 ? "Guests" : "Guest"%></h4>
-<h4>Owned by <%=@req.space.user.username%> </h4>
+<div id='container'>
+  <div id='request-id'>
+    <h3>Request for <a id='space-link-<%=@req.space.id%>' href='/spaces/<%=@req.space.id%>'><%=@req.space.name%></a> </h3>
+    <h4>On date: </h4><p><%=@req.date%></p>
+    <h4>Status: </h4> <p><%=@req.status%></p>
+    <h4>For: </h4> <p><%=@req.no_guests%> <%=@req.no_guests.to_i > 1 ? "Guests" : "Guest"%></p>
+    <h4>Owned by </h4><p><%=@req.space.user.username%></p>
+  </div>
+</div>
 
 <textarea id="message-new-box" name="content" form="message-new">Enter text here...</textarea>
 <form id="message-new" action="/messages" method="post">
@@ -17,5 +21,5 @@
     <div class="message-time"> <%= message.time.strftime("Created on: %m/%d/%Y at: %I:%M%p") %> </div>
     <div class="message-content"> <%= message.content %> </div>
   </div>
-  <% end %>
+  <% end %>§
 </div>
