@@ -9,7 +9,7 @@
 </div>
 
 <div id='text-container'>
-  <textarea id="message-new-box" name="content" form="message-new">Enter text here...</textarea>
+  <textarea id="message-new-box" name="content" form="message-new" placeholder="Enter text here..."></textarea>
   <form id="message-new" action="/messages" method="post">
     <input type='hidden' name='request_id' value='<%=@req.id%>'/>
     <input id='send-message' type="submit" value="Send" />
