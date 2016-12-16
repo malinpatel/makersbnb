@@ -37,13 +37,13 @@ feature 'Approving requests' do
   end
 
   scenario "I want to approve a request" do
-    click_button 'approve-request'
+    click_button 'approve'
     expect(Request.get(1).accepted).to be(true)
     expect(page).to have_content "Request accepted"
   end
 
   scenario "I want to reject a request" do
-    click_button 'reject-request'
+    click_button 'reject'
     expect(Request.get(2).accepted).to be(false)
     expect(page).to have_content "Request denied"
   end

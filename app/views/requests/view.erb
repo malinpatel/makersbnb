@@ -14,6 +14,9 @@
           <p><%=request.status %></p>
           <a id='space-link-<%=request.space.id%>' href='/requests/<%=request.id%>'><%=request.space.name%></a>
           <a id='request-link-<%=request.id%>' href='/requests/<%=request.id%>' > <%=request.date%> </a>
+          <form action='/requests/<%=request.id%>' method='get'>
+            <input class='view-request' type='submit' value='View Request'/>
+          </form>
         </div>
       </div>
     </div>
@@ -21,39 +24,42 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-12">
-    <h2>Requests I have received: </h2>
+
+  <div class="row">
+      <div class="col-lg-12">
+          <h2>Requests I have received: </h2>
+      </div>
   </div>
-</div>
-<div class="row text-center" id='requests-received'>
-  <% current_user.spaces.each do |space| %>
-  <% space.requests.each do |request| %>
-  <div class="col-md-3 col-sm-6 hero-feature">
-    <div id='space-box' class="thumbnail">
-      <img src="<%=space.image%>" alt="">
-      <div class="caption">
-        <a href='/spaces/<%=space.id%>'><%=space.name%></a>
-        <span>Request from: <%=request.user.username%> </span>
-        <% if request.status == "pending" %>
-        <div id='request-forms' >
-          <form class='request-forms' action='/requests/view' method='post'>
-            <input type='hidden' name="request_id"  value="<%=request.id%>"/>
-            <input name = "reply" id='approve-request' type="submit" value="approve" />
-            <input name = "reply" id='reject-request' type="submit" value="reject" />
+  <div class="row text-center" id='requests-received'>
+    <% current_user.spaces.each do |space| %>
+    <% space.requests.each do |request| %>
+    <div class="col-md-3 col-sm-6 hero-feature">
+      <div id='space-box' class="thumbnail">
+        <img src="<%=space.image%>" alt="">
+        <div class="caption">
+          <a href='/spaces/<%=space.id%>'><%=space.name%></a>
+          <a href='/requests/<%=request.id%>' > <%=request.date%> </a>
+          <span>| from <%=request.user.username%> </span>
+          <form action='/requests/<%=request.id%>' method='get'>
+            <input class='view-request' type='submit' value='View Request'/>
           </form>
-        </div>
-        <% elsif request.accepted %>
-        <p> Request accepted </p>
-        <% elsif request.rejected %>
-        <p> Request denied </p>
-        <% end %>
+    <% if request.pending? %>
+    <div id='request-forms' >
+    <form class='request-forms' action='/requests/view' method='post'>
+      <input type='hidden' name="request_id"  value="<%=request.id%>"/>
+      <input name = "reply" id='approve-request' type="submit" value="approve" />
+      <input name = "reply" id='reject-request' type="submit" value="reject" />
+    </form>
+  </div>
+    <% elsif request.accepted %>
+    <p> Request accepted </p>
+    <% elsif request.rejected %>
+    <p> Request denied </p>
+    <% end %>
+
       </div>
     </div>
   </div>
   <%end%>
   <%end%>
-</div>
-
-</div>
 </div>

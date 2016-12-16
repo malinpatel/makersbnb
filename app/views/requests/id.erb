@@ -7,3 +7,19 @@
     <h4>Owned by </h4><p><%=@req.space.user.username%></p>
   </div>
 </div>
+
+<textarea id="message-new-box" name="content" form="message-new">Enter text here...</textarea>
+<form id="message-new" action="/messages" method="post">
+  <input type='hidden' name='request_id' value='<%=@req.id%>'/>
+  <input id='send-message' type="submit" value="Send" />
+</form>
+
+<div id="messages-container">
+  <%@req.messages.each do |message| %>
+  <div class="message">
+    <div class="message-from">    From: <%= message.user.username %> </div>
+    <div class="message-time"> <%= message.time.strftime("Created on: %m/%d/%Y at: %I:%M%p") %> </div>
+    <div class="message-content"> <%= message.content %> </div>
+  </div>
+  <% end %>§
+</div>

@@ -46,17 +46,17 @@ feature "viewing requests" do
             make_request(Space.first)
           end
 
-      scenario "View requests I have made" do
+      scenario "View requests I have made as a guest" do
         visit '/requests/view'
         within "div#requests-made" do
 
           expect(page).to have_content penthouse[:name]
           expect(page).to have_content "2017-01-01"
         end
-        click_link '2017-01-01'
+        click_button 'View Request'
         expect(page).to have_content "Request for London Penthouse"
         expect(page).to have_content "On date: 2017-01-01"
-        expect(page).to have_content "Status: pending"
+        expect(page).to have_content "Status: Pending"
         expect(page).to have_content "For: 4 Guests"
         expect(page).to have_content "Owned by malina"
       end
@@ -66,9 +66,9 @@ feature "viewing requests" do
         log_in user
         visit '/requests/view'
         within 'div#requests-received' do
-    
+
           expect(page).to have_content penthouse[:name]
-          expect(page).to have_content "Request from"
+          expect(page).to have_content "| from"
           expect(page).to have_content user2[:username]
         end
       end

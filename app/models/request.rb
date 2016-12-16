@@ -10,6 +10,7 @@ class Request
 
   belongs_to  :space
   belongs_to  :user
+  has n, :messages
 
   def initialize params
     self.date = params[:date]
@@ -23,8 +24,8 @@ class Request
   end
 
   def status
-    return "pending" if pending?
-    return "accepted" if self.accepted
-    return "rejected" if self.rejected
+    return "Pending" if pending?
+    return "Accepted" if self.accepted
+    return "Rejected" if self.rejected
   end
 end

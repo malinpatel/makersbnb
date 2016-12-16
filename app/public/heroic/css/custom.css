@@ -89,9 +89,7 @@ a.links:link {
   float: left;
 }
 
-#request-forms {
-  display: inline-block;
-}
+
 
 #request-id {
   border-style: solid;
@@ -106,6 +104,16 @@ a.links:link {
   height: auto;
 }
 
-#img-height {
-  height: 126.56px;
+#space-view-height {
+  height: auto;
+  width: 50%;
+}
+
+#request-forms {
+  display: inline-block;
+  width: 100%;
+}
+
+.request-forms {
+  width: 100%;
 }
