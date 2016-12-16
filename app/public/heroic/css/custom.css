@@ -92,3 +92,20 @@ a.links:link {
 #request-forms {
   display: inline-block;
 }
+
+#request-id {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+.image {
+  width: 600px;
+  height: auto;
+}
+
+#img-height {
+  height: 126.56px;
+}
