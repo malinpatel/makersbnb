@@ -26,7 +26,6 @@ class MakersBNB < Sinatra::Base
       redirect '/spaces/new'
     end
     @filename = "default.jpg"
-    # require 'pry'; binding.pry
     if params[:file]
       @filename = params[:file][:filename]
       file = params[:file][:tempfile]
